@@ -1,0 +1,188 @@
+{% extends 'Layouts/template.twig' %}
+ {% block content %}
+     <div class="row">
+         <div class="col-md-8">
+             <div class="nome">
+                 <h3>SISTEMA NACIONAL DE AVALIAÇÃO TÉCNICA DE SISTEMAS INOVADORES E CONVENCIONAIS - SiNAT</h3>
+             </div>
+             <br>
+             <p class="text-justify">Sistema Nacional de Avaliação Técnica de Sistemas Inovadores e Convencionais
+                 empregados em empreendimentos habitacionais, baseado no conceito de desempenho. O SiNAT tem como
+                 objetivo a harmonização de procedimentos para a avaliação técnica de Sistemas Inovadores e
+                 Convencionais
+                 da Construção Civil no Brasil.</p><br>
+             <img src="./assets/img/imgSINAT.png" class="img-responsive"/>
+         </div>
+         <div class="col-md-4">
+             <div class="card">
+                 <h3 class="card-header text-center">ÁREA DE ACESSO</h3>
+                 <div class="card-block">
+                     <form action="/auth" method="POST">
+                         <div class="form-group">
+                             <label for="username" class="col-2 col-form-label">Email</label>
+                             <div class="col-10">
+                                 <input id="username"
+                                        class="form-control" placeholder="email"
+                                        type="text" name="username" required autofocus>
+
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label for="password" class="col-2 col-form-label">Senha</label>
+                             <div class="col-10">
+                                 <input id="password"
+                                        class="form-control"
+                                        type="password" name="password" placeholder="senha" required>
+                             </div>
+                         </div>
+                         <div>
+                             <button type="submit" id="login" class="btn btn-primary btn-block">Entrar
+                             </button>
+                         </div>
+                         <div class="row">
+                             <div class="col-md-12">
+                                 <div class="pull-left">
+                                     <a href="#" data-target="#formulario-modal" data-toggle="modal"
+                                        data-target="#formularioModal">Esqueci a senha</a><br>
+                                     <a href="src/paginas/cadUsuario.php">Clique aqui para cadastrar</a><br>
+                                 </div>
+                             </div>
+                         </div>
+
+                     </form>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div id="formulario-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true" data-backdrop="static" data-keyboard="false">
+         <div class="modal-dialog">
+             <div class="modal-content">
+                 <div class="modal-header">
+
+                     <h4 class="modal-title tituloModal" id="myModalLabel">SOLICITAÇÃO DE ALTERAÇÃO DE SENHA</h4>
+                 </div>
+                 <div class="modal-body">
+                     <div class="container">
+                         <form id="frmEsqueciSenha" class="form-horizontal" method="post">
+                             <div class="container">
+                                 <div class="form-group">
+                                     <div class="row">
+                                         <div class="col-xs-7">
+                                             <input type="text" id="emailEsqueci" name="emailEsqueci"
+                                                    class="form-control" placeholder="Informe o email cadastrado."
+                                                    required autofocus>
+                                         </div>
+                                     </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                     <div class="row">
+                                         <div class="col-md-6" id="addButton">
+                                             <br>
+                                             <button type="submit" class="btn btn-info"
+                                                     id="btnEsqueciSenha"
+                                                     name="btnEsqueciSenha">Enviar
+                                             </button>
+                                             <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                                     target="_parent" id="fecharFormulario">Fechar
+                                             </button>
+                                         </div>
+                                     </div><!-- row-->
+                                 </div><!--form-group-->
+                             </div>
+                         </form>
+                     </div> <!-- FECHA CONTAINER -->
+                 </div>    <!-- modal-body-->
+             </div><!-- modal-content-->
+         </div><!-- modal-dialog-->
+     </div><!-- modal fade-->
+ {% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+
+
+    <script type="text/javascript">
+
+        function responsavelRegistro() {
+            let modal = $('#formulario-modal');
+            modal.modal('show');
+        }
+
+        $(function () {
+            $('#frmEsqueciSenha').formValidation({
+                framework: 'bootstrap',
+                icon: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                locale: 'pt_BR',
+                fields: {
+                    emailEsqueci: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Digite o email do usuario'
+                            },
+                            stringLength: {
+                                max: 50,
+                                message: 'Por favor digite até 50 caracteres'
+                            },
+                            emailAddress: {
+                                message: 'Por favor digite um email válido'
+                            }
+                        }
+                    }
+                }
+            }).on('success.form.fv', function (e) {
+                e.preventDefault(); // Previne o envio normal para conseguir enviar a caixa mostrando que o respons?vel foi cadastrado com  sucesso
+
+                var emailEsqueci = $('#emailEsqueci').val();
+                //alert('email: ' + emailUsuario);
+                var $form = $(e.target),        // The form instance
+                    fv = $(e.target).data('formValidation'); // FormValidation instance
+                // Do something ...
+                $.get("/consultarEmail?email=" + emailEsqueci + "", function (resultado) {
+                    console.log(resultado);
+                    if (resultado == 1) {
+                        bootbox.dialog({
+                            closeButton: false,
+                            message: "Acesse seu email e clique no link para alterar sua senha de acesso.",
+                            title: "Email enviado",
+                            buttons: {
+                                success: {
+                                    label: "OK",
+                                    className: "btn-success",
+                                    callback: function () {
+                                        bootbox.hideAll();
+                                    }
+                                }
+                            }
+                        });//bootbox.dialog
+
+                    } else if (resultado == 0) {
+                        bootbox.dialog({
+                            closeButton: false,
+                            message: "O email informado não esta cadastrado no sistema.  Favor informar um email cadastrado.",
+                            title: "Email inexistente",
+                            buttons: {
+                                danger: {
+                                    label: "OK",
+                                    className: "btn-danger",
+                                    callback: function () {
+                                        fv.resetForm();
+                                        bootbox.hideAll();
+                                    }
+                                }
+                            }
+                        });//bootbox.dialog
+
+                    }
+                });
+            })
+        })
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300|Montserrat:700,400' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./assets/css/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="./assets/js/angular-1.8.1/docs/components/bootstrap-3.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/formValidation.min.css">
+    <link rel="stylesheet" href="./assets/css/norma.css">
+    <script src="./assets/js/metronic/global/plugins/jquery.min.js" type="text/javascript"></script>
+
+    <script src="./assets/js/formValidation/formValidation.min.js" type="text/javascript"></script>
+    <script src="./assets/js/formValidation/bootstrap.min.js" type="text/javascript"></script>
+    {#<script  src=./assets/js/pt_BR.js" type="text/javascript"></script>#}
+    <script src="./assets/js/metronic/global/plugins/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="http://barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"
+            type="text/javascript"></script>
+    {#<script src="./assets/js/catalogoConvencional.js"></script>#}
+
+
+    <script type="text/javascript" src="./assets/js/angular-1.8.1/angular.min.js"></script>
+    <script type="text/javascript" src="./assets/js/angular-1.8.1/angular-animate.js"></script>
+    <script type="text/javascript" src="./assets/js/angular-1.8.1/angular-resource.min.js"></script>
+    <script type="text/javascript" src="./assets/js/angular-1.8.1/app.js"></script>
+    {#<script src="./assets/js/angular/controllers.js"></script>#}
+
+    {% block styles %}{% endblock %}
+
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <title>{{ title }}</title>
+</head>
+<body>
+{% include'Layouts/partials/header.twig' %}
+{% include'Layouts/partials/menu.twig' %}
+{% include'Layouts/partials/flash.twig' %}
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+{% include'Layouts/partials/footer.twig' %}
+{% block scripts %}
+
+{% endblock %}
+</body>
+</html>

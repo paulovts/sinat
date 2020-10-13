@@ -1,0 +1,180 @@
+{% extends 'Layouts/template.twig' %}
+{% block content %}
+    <div class="page-header">
+        <H2 id="bemVindo">Sistemas Inovadores</H2>
+    </div>
+    <div id="comoPreencher" style="margin-top:0">
+        <p>Consiste em sistema ou subsistema construtivo que não seja objeto de norma brasileira prescritiva e não tenha
+            tradição de uso no território nacional.
+            Estes processos constituem inovações em relação ao processo convencional da construção civil no Brasil.</p>
+    </div>
+    <br>
+    <div ng-app="myApp" ng-controller="CatalogoInovador">
+        <div id="filtrarCatalogo" class="well"
+             style="padding-left: 0px; padding-top: 0px; padding-right: 0px; text-align:center">
+            <h1 style="background-color: #E1E1E1; font-size: 17px; margin-top:0; padding-top: 5px; padding-bottom: 5px">
+                Filtrar Diretrizes e Datecs</h1>
+            <div class="form-inline">
+                <div class="form-group">
+                    <label class="labelFiltro">Diretriz:</label>
+                    <select ng-model="diretriz.num_numero_diretriz" class="form-control">
+                        <option value="">Todas</option>
+                        <option ng-repeat="item in catalogoInovador | orderBy: item.num_numero_diretriz"
+                                value="{{ '{{ item.num_numero_diretriz }}' }}">Diretriz SiNAT
+                            nº {{ '{{ item.num_numero_diretriz }}' }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="labelFiltro">DATec:</label>
+                    <select ng-model="datec.num_ordem_ficha" class="form-control" ng-change="mudarDatec()">
+                        <option value="">Todos</option>
+                        <option ng-repeat="itemDatec in catalogoDatec" value="{{ '{{ itemDatec.num_ordem_ficha }}' }}">
+                            DATec
+                            nº {{ '{{ itemDatec.num_ordem_ficha }}' }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="labelFiltro">Buscar Palavra-Chave: </label>
+                    <input ng-model="buscar" placeholder="Ex: Bloco cerâmico" class="form-control" autofocus/>
+                </div>
+                <div class="form-group">
+                    <label class="labelFiltroPequeno"> Ordenar por:
+                        <select ng-model="ordem" class="form-control input-sm">
+                            <option value="numero">Numero</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" ng-model="direcao" name="direcao" checked/>
+                        <label class="form-check-label" for="defaultCheck2">
+                            crescente
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" ng-model="direcao" name="direcao"
+                               value="reverse"/>
+                        <label class="form-check-label" for="defaultCheck2">
+                            decrescente
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table id="tabelaCatalogoDiretriz" class="table table-bordered">
+            <h1>Diretrizes SiNAT:</h1>
+            <tr>
+                <th class="col-xs-2">Diretriz SiNAT Nº</th>
+                <th class="col-xs-1">Revisão nº</th>
+                <th class="col-xs-2">Data de Publicação</th>
+                <th class="col-xs-1">DATecs vinculadas</th>
+                <th class="col-xs-5">Descrição</th>
+                <th class="col-xs-1">Download</th>
+            </tr>
+            <tr ng-animate="'animate'" class="fileiraCatalogo"
+                ng-repeat="item in catalogoInovador | filter: buscar | filter: diretriz:identical | filter: datec | orderBy: ordem:direcao">
+                <td>{{ '{{item.num_numero_diretriz }}' }}</td>
+                <td>{{ '{{item.num_ultima_revisao }}' }}</td>
+                <td>{{ '{{item.dte_data_pulicacao_diretriz | date:"dd/MM/yyyy"}}' }}</td>
+                <td>{{ '{{ item.num_ordem_ficha }}' }}</td>
+                <td>{{ '{{ item.txt_descricao_diretriz }}' }}</td>
+                <td class="text-center"><a ng-href="/inovadores/arquivos/diretriz/pdf/{{ '{{ item.cod_diretriz}}' }}"
+                                           download><i
+                                class="fa fa-file-pdf-o fa-4x"></i></a></td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <table id="tabelaCatalogoDatec" class="table table-bordered">
+            <h1>DATecs:</h1>
+            <tr>
+                <th class="col-xs-1">DATec nº</th>
+                <th class="col-xs-1">Versão</th>
+                <th class="col-xs-2">Validade</th>
+                <th class="col-xs-1">Diretriz</th>
+                <th class="col-xs-6">Descrição</th>
+                <th class="col-xs-1">Download</th>
+            </tr>
+            <tr ng-animate="'animate'" class="fileiraCatalogo"
+                ng-repeat="itemDatec in catalogoDatec | filter: buscar | filter: datec | filter: diretriz:identical | orderBy: ordem:direcao">
+                <td>{{ '{{ itemDatec.num_ordem_ficha }}' }}</td>
+                <td>{{ '{{ itemDatec.txt_ultima_versao }}' }}</td>
+                <td>{{ '{{ itemDatec.dte_data_validade | date:"dd/MM/yyyy" }}' }}</td>
+                <td>{{ '{{ itemDatec.num_numero_diretriz }}' }}</td>
+                <td>{{ '{{ itemDatec.txt_descricao_datec }}' }}</td>
+                <td class="text-center"><a
+                            ng-href="/inovadores/arquivos/datec/pdf/{{ '{{ itemDatec.cod_catalogo_datec}}' }}" download><i
+                                class="fa fa-file-pdf-o fa-4x"></i></a></td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script>
+        let catalogoInovador = angular.module('myApp', ['ngAnimate']);
+
+        catalogoInovador.controller('CatalogoInovador', ['$scope', '$http', function ($scope, $http) {
+            $scope.ordem = 'numero';
+            $http({
+                method: 'GET',
+                url: '/inovadores/lista'
+            }).then(function successCallback(response) {
+
+                $scope.catalogoInovador = response.data;
+                var countDatec = 0;
+                $scope.catalogoDatec = [];
+                for (var ind = 0; ind < response.data.length; ind++) {
+                    for (var n = 0; n < response.data[ind].jsondatec.length; n++) {
+                        if (response.data[ind].jsondatec[n] != null) {
+                            $scope.catalogoDatec.push(response.data[ind].jsondatec[n]);
+                            $scope.catalogoDatec[countDatec].num_numero_diretriz = response.data[ind].num_numero_diretriz;
+                            countDatec++;
+                        }
+
+                    }
+                    //Deletar o jsonDatec do catalogo Inovador, previnindo o filtro buscar de encontrar numeros desnecess?os do cpnj do proponente
+                    delete $scope.catalogoInovador[ind].jsondatec;
+                }
+                $scope.datecVinculadas = [];
+                for (var ind = 0; ind < $scope.catalogoDatec.length; ind++) {
+                    var codDiretriz = ind + 1;
+                    $scope.datecVinculadas[codDiretriz] = [];
+
+                    for (var n = 0; n < $scope.catalogoDatec.length; n++) {
+                        if (codDiretriz == $scope.catalogoDatec[n].cod_diretriz) {
+                            $scope.datecVinculadas[codDiretriz] += $scope.catalogoDatec[n].num_ordem_ficha + ';';
+                        }
+                    }
+                }
+                for (var i = 0; i < $scope.catalogoInovador.length; i++) {
+                    $scope.catalogoInovador[i].num_ordem_ficha = "";
+                    if ($scope.datecVinculadas[i + 1].length != 0) {
+                        $scope.catalogoInovador[i].num_ordem_ficha = $scope.datecVinculadas[i + 1]; //num_ordem_fica serve para manter o mesmo nome que existe no $scope da diretriz, para filtrar ambas as tabelas ao mesmo tempo
+                    }
+                }
+                $scope.catalogoInovador.sort(function (a, b) {
+                    return parseFloat(Number(a.num_numero_diretriz)) - parseFloat(Number(b.num_numero_diretriz));
+                });
+                //colocar o catalogoDatec em ordem alfabetica
+                $scope.catalogoDatec.sort(function (a, b) {
+                    return parseFloat(Number(a.num_ordem_ficha)) - parseFloat(Number(b.num_ordem_ficha));
+                });
+
+                console.log($scope.catalogoDatec);
+                console.log($scope.catalogoInovador);
+            }, function errorCallback(response) {
+
+            });
+
+        }]);
+
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,213 @@
+{% extends 'Layouts/template.twig' %}
+{% block content %}
+    <div class="page-header">
+        <H2 id="bemVindo">Sistemas Convencionais</H2>
+    </div>
+    <div id="comoPreencher" style="margin-top:0">
+        <p>A documentação técnica contida neste sistema foi desenvolvida, por iniciativa do Ministério das Cidades, em
+            parceria com a Caixa, entidades públicas e privadas, para apoiar incorporadores, construtores, projetistas,
+            fabricantes de componentes, empreendedores em geral, na obtenção de edificações que atendam aos requisitos,
+            critérios e parâmetros de Desempenho estabelecidos na ABNT NBR 15575.</p>
+    </div>
+    <br>
+    <div data-ng-app="myApp" ng-controller="CatalogoConvencional"> <!--Inicio Tabela Catálogo-->
+
+
+        <div id="filtrarCatalogo" class="well"
+             style="padding-left: 0px; padding-top: 0px; padding-right: 0px; text-align:center">
+            <h1 style="background-color: #E1E1E1; font-size: 17px; margin-top:0; padding-top: 5px; padding-bottom: 5px">
+                Filtrar Fichas</h1>
+            <div class="row" style="padding-left:10px; padding-top: 20px;">
+                <div class="form-inline">
+                    <div class="col-sm-6 col-xs-12">
+                        <label class="labelFiltro"> Sistema: </label>
+                        <select class="form-control selectContainer" ng-change="mudaSolucao(sistema)" name='sistema'
+                                ng-model="sistema">
+                            <option value="">Todos</option>
+                            <option ng-repeat="option in listaSistema.options" value="{{ '{{option.txt_sistema }}' }}">
+                                {{ '{{option.txt_sistema}}' }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12">
+                        <label class="labelFiltro"> Solução: </label>
+                        <select ng-model="solucao" class="form-control" name="solucao">
+                            <option value="">Todas</option>
+                            <option ng-repeat="option in listaSolucao.options"
+                                    value="{{ '{{ option.txt_solucao}}' }}">{{ '{{ option.txt_solucao}}' }}</option>
+                        </select>
+                    </div>
+                </div>  <!-- Fim Form-Inline -->
+            </div> <!-- Fim Row -->
+
+            <br>
+
+            <div class="row" style="padding-left:10px;">
+                <div class="form-inline">
+                    <div class="col-sm-6 col-xs-12">
+                        {#<label class="labelFiltro">Situação da Ficha: </label>#}
+                        {#<select ng-change="mudarNome()" ng-model="situacao"#}
+                        {#ng-options="item.key as item.tipo for item in situacaoFicha | orderBy: item.tipo"#}
+                        {#class="form-control" ng-class="{alerta: emAvaliacao}" id="comboSituacao"#}
+                        {#name="comboSituacao">#}
+                        {#</select>#}
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <label class="labelFiltro">Buscar Palavra-Chave: </label>
+                        <input ng-model="buscar" placeholder="Ex: Bloco cerâmico" class="form-control"
+                               ng-class="{alerta: emAvaliacao}" autofocus/>
+                    </div>
+
+                </div> <!-- Fim Form-Inline -->
+            </div> <!-- Fim Row -->
+
+            <br>
+
+            <div class="form-inline filtroOrdem">
+                <label class="labelFiltroPequeno"> Ordenar:
+                    <select ng-model="ordem" class="form-control input-sm" ng-class="{alerta: emAvaliacao}">
+                        <option value="sistema">Sistema</option>
+                        <option value="solucao">Solução</option>
+                    </select>
+                </label>
+
+                <label class="labelFiltroPequeno">
+                    <input type="radio" ng-model="direcao" name="direcao" checked></input>
+                    crescente
+                </label>
+                <label class="labelFiltroPequeno">
+                    <input type="radio" ng-model="direcao" name="direcao" value="reverse"></input>
+                    decrescente
+                </label>
+            </div>
+        </div> <!-- Fim Filtro / Well -->
+
+        <hr>
+
+        <h1 id="titulo_result">{{ '{{titulo }}' }}</h1>
+        <div ng-show="emAvaliacao">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title" ng-class="{naoAvaliadoPulse: emAvaliacao}"
+                        style="text-align:center; font-weight: bold">ATENÇÃO</h3>
+                </div>
+                <div class="panel-body">
+                    As soluções das fichas disponibilizadas abaixo não têm resultados de ensaios suficientes para
+                    comprovação de desempenho. A utilização destas soluções requer o acompanhamento de uma <strong>Instituição
+                        Técnica Avaliadora (ITA)</strong>.
+                </div>
+            </div>
+        </div>
+        <table id="tabelaCatalogo" class="table table-bordered">
+
+            <tr>
+                <th class="col-xs-2">Sistema</th>
+                <th class="col-xs-2">Solução</th>
+                <th class="col-xs-7">Descrição</th>
+                <th class="col-xs-1">Download</th>
+            </tr>
+
+            <tr class="fileiraCatalogo"
+                ng-repeat="item in catalogo | filter: buscar | filter: situacao | filter: sistema | filter: solucao | orderBy: ordem:direcao">
+                <td>{{ '{{ item.sistema}}' }}</td>
+                <td>{{ '{{ item.solucao}}' }}</td>
+                <td class="text-justify">{{ '{{item.descricao }}' }}</td>
+                <td class="text-center"><a ng-href="/convencionais/arquivos/pdf/{{ '{{ item.cod_catalogo_convencional }}' }}" download><i
+                                class="fa fa-file-pdf-o fa-4x"></i></a></td>
+                {#<td class="text-center"><a data-toggle="modal" data-target="#myModal"#}
+                {#ng-click="abrirModal(item.numero, item.url)"><i#}
+                {#class="fa fa-file-pdf-o fa-4x naoAvaliadoDoc"></i></a></td>#}
+            </tr>
+        </table>
+        <div *ngFor="let item of catalogo.data">{{ item }}</div>
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog atencao">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">ATENÇÃO</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>A solução da ficha que você vai acessar não tem resultados de ensaio suficientes para
+                            comprovação
+                            de desempenho. A utilização desta solução requer o acompanhamento de uma <strong>Instituição
+                                Técnica Avaliadora (ITA)</strong>.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                        <a ng-href="../../{{ modal.url }}" class="btn btn-default" download
+                           ng-click="">Download</a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script>
+
+        let catalogoConvencional = angular.module('myApp', ['ngAnimate']);
+
+        catalogoConvencional.controller('CatalogoConvencional', ['$scope', '$http', function ($scope, $http) {
+            $scope.ordem = 'sistema';
+            $scope.sistema = "";
+            $scope.solucao = "";
+
+            $http({
+                method: 'GET',
+                url: '/convencionais/lista'
+            }).then(function successCallback(response) {
+                $scope.catalogo = response.data;
+            }, function errorCallback(response) {
+
+            });
+            $scope.titulo = "Soluções com desempenho avaliado";
+            $scope.emAvaliacao = false;
+            $http({
+                method: 'GET',
+                url: '/sistema/lista'
+            }).then(function successCallback(response) {
+                $scope.listaSistema = {
+                    model: null,
+                    options: response.data
+                };
+
+            }, function errorCallback(response) {
+
+            });
+
+            $http({
+                method: 'GET',
+                url: '/solucao/lista'
+            }).then(function successCallback(response) {
+                $scope.listaSolucao = {
+                    model: null,
+                    options: response.data
+                };
+
+            }, function errorCallback(response) {
+
+            });
+            $scope.mudaSolucao = function (id) {
+                let params = {'sistema': id};
+                $http.get('/solucao/lista', {params}).then(function (response) {
+                    $scope.listaSolucao = {
+                        model: null,
+                        options: response.data
+                    };
+                });
+            }
+        }]);
+
+
+    </script>
+
+{% endblock %}

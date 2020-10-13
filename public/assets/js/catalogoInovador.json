@@ -1,0 +1,284 @@
+﻿[
+	{
+		"tipo"				: "Diretriz",
+		"numeroDiretriz"	: "001",
+		"revisao"			: "02",
+		"data" 				: "Agosto de 2011",
+		"descricao"			: "Sistemas construtivos em paredes de concreto armado moldadas no local",
+		"numeroDatec"   	: "005-B; 026",
+		"url"				: "../../_catalogos/inovador/diretriz/Diretriz_001.pdf"		
+	},
+	{
+		"tipo"				: "Diretriz",
+		"numeroDiretriz"	: "002",
+		"revisao"			: "01",
+		"data" 				: "Julho de 2012",
+		"descricao"			: "Sistemas construtivos integrados por painéis pré-moldados para emprego como paredes de edifícios habitacionais",
+		"numeroDatec"   	: "003-B; 007-A; 008-A; 009B; 012-A; 021; 023; 024",
+		"url"				: "../../_catalogos/inovador/diretriz/Diretriz_002.pdf"		
+	},
+	{
+		"tipo"				: "Diretriz",
+		"numeroDiretriz"	: "003",
+		"revisao"			: "01",
+		"data" 				: "Dezembro de 2012",
+		"descricao"			: "Sistemas construtivos estruturados em perfis leves de aço - Light Steel Framing",
+		"numeroDatec"  		: "014-A",
+		"url"				: "../../_catalogos/inovador/diretriz/Diretriz_003.pdf"		
+	},
+	{
+		"tipo"				: "Diretriz",
+		"numeroDiretriz"	: "004",
+		"revisao"			: "",
+		"data" 				: "Setembro de 2010",
+		"descricao"			: "Sistemas construtivos formados por paredes estruturais constituídas de paneis de PVC preenchidos com concreto",
+		"numeroDatec"   	: "",
+		"url"				: "../../_catalogos/inovador/diretriz/Diretriz_004.pdf"		
+	},
+	{
+		"tipo"				: "Diretriz",
+		"numeroDiretriz"	: "005",
+		"revisao"			: "",
+		"data" 				: "Setembro de 2011",
+		"descricao"			: "Sistemas construtivos estruturados em peças de madeira maciça - Light Wood Framing",
+		"numeroDatec"   	: "020",
+		"url"				: "../../_catalogos/inovador/diretriz/Diretriz_005.pdf"		
+	},
+	{
+		"tipo"				: "Diretriz",
+		"numeroDiretriz"	: "006",
+		"revisao"			: "",
+		"data" 				: "Julho de 2012",
+		"descricao"			: "Argamassa inorgânica decorativa para revestimentos monocamada",
+		"numeroDatec"   	: "019",
+		"url"				: "../../_catalogos/inovador/diretriz/Diretriz_006.pdf"		
+	},
+	{
+		"tipo"				: "Diretriz",
+		"numeroDiretriz"	: "007",
+		"revisao"			: "01",
+		"data" 				: "Junho de 2014",
+		"descricao"			: "Telhas plásticas para telhado",
+		"numeroDatec"   	: "022; 025",
+		"url"				: "../../_catalogos/inovador/diretriz/Diretriz_007.pdf"		
+	},
+	{
+		"tipo"				: "Diretriz",
+		"numeroDiretriz"	: "008",
+		"revisao"			: "",
+		"data" 				: "Dezembro de 2012",
+		"descricao"			: "Vedações verticais internas em alvenaria não-estrutural de blocos de gesso",
+		"numeroDatec"   	: "",
+		"url"				: "../../_catalogos/inovador/diretriz/Diretriz_008.pdf"		
+	},
+	{
+		"tipo"				: "Diretriz",
+		"numeroDiretriz"	: "009",
+		"revisao"			: "",
+		"data" 				: "Dezembro de 2012",
+		"descricao"			: "Sistema de vedação vertical externa sem função estrutural em perfis leves de aço",
+		"numeroDatec"   	: "",
+		"url"				: "../../_catalogos/inovador/diretriz/Diretriz_009.pdf"		
+	},
+	{
+		"tipo"				: "Diretriz",
+		"numeroDiretriz"	: "010",
+		"revisao"			: "",
+		"data" 				: "Fevereiro de 2014",
+		"descricao"			: "Sistemas construtivos formados por painéis pré-fabricados de chapas delgadas vinculadas por núcleo de isolante térmico rígido",
+		"numeroDatec"   	: "",
+		"url"				: "../../_catalogos/inovador/diretriz/Diretriz_010.pdf"		
+	},
+	{
+		"tipo"				: "Diretriz",
+		"numeroDiretriz"	: "011",
+		"revisao"			: "",
+		"data" 				: "Junho de 2014",
+		"descricao"			: "Paredes, moldadas no local, constituídas por componentes de EPS, aço e argamassa, microconcreto ou concreto",
+		"numeroDatec"   	: "",
+		"url"				: "../../_catalogos/inovador/diretriz/Diretriz_011.pdf"		
+	},
+	
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "003",
+		"versao"			: "B",
+		"diretriz" 			: "002",
+		"emissao"			: "Julho de 2015",
+		"validade"			: "Julho de 2017",
+		"proponente"		: "VIVER INCORPORADORA E CONSTRUTORA S.A",
+		"descricao"			: "Painéis maciços pré-moldados de concreto armado para paredes da VIVER",
+		"numeroDiretriz" 	: "002",
+		"url"				: "../../_catalogos/inovador/datec/Datec_003.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "005",
+		"versao"			: "B",
+		"diretriz" 			: "001",
+		"emissao"			: "Junho de 2014",
+		"validade"			: "Maio de 2016",
+		"proponente"		: "HOBRAZIL Sistema Construtivo Ltda",
+		"descricao"			: "Paredes maciças moldadas no local de concreto leve com polímero e armadura de fibra de vidro protegida com poliéster – HOBRAZIL",
+		"numeroDiretriz" 	: "001",
+		"url"				: "../../_catalogos/inovador/datec/Datec_005.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "007",
+		"versao"			: "A",
+		"diretriz" 			: "002",
+		"emissao"			: "Junho de 2014",
+		"validade"			: "Maio de 2016",
+		"proponente"		: "ROSSI Residencial S.A.",
+		"descricao"			: "Painéis pré-moldados maciços de concreto armado para execução de paredes – Rossi",
+		"numeroDiretriz" 	: "002",
+		"url"				: "../../_catalogos/inovador/datec/Datec_007.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "008",
+		"versao"			: "A",
+		"diretriz" 			: "002",
+		"emissao"			: "Setembro de 2014",
+		"validade"			: "Agosto de 2016",
+		"proponente"		: "JET CASA PRÉ FABRICADOS S.A",
+		"descricao"			: "Painéis JETCASA pré-moldados mistos de concreto armado e blocos cerâmicos para paredes",
+		"numeroDiretriz" 	: "002",
+		"url"				: "../../_catalogos/inovador/datec/Datec_008.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "009",
+		"versao"			: "B",
+		"diretriz" 			: "002",
+		"emissao"			: "Junho de 2014",
+		"validade"			: "Maio de 2016",
+		"proponente"		: "CASA EXPRESS Construções e Empreendimentos Imobiliários Ltda",
+		"descricao"			: "Painéis pré-moldados mistos de concreto armado e blocos cerâmicos para paredes - CASA EXPRESS",
+		"numeroDiretriz" 	: "002",
+		"url"				: "../../_catalogos/inovador/datec/Datec_009.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "012",
+		"versao"			: "A",
+		"diretriz" 			: "002",
+		"emissao"			: "Setembro de 2014",
+		"validade"			: "Agosto de 2016",
+		"proponente"		: "PRECON ENGENHARIA S.A.",
+		"descricao"			: "Painéis pré-fabricados mistos de concreto armado e blocos cerâmicos sem função estrutural – PRECON",
+		"numeroDiretriz" 	: "002",
+		"url"				: "../../_catalogos/inovador/datec/Datec_012.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "014",
+		"versao"			: "A",
+		"diretriz" 			: "003",
+		"emissao"			: "Julho de 2015",
+		"validade"			: "Junho de 2017",
+		"proponente"		: "Saint-Gobain do Brasil Ltda",
+		"descricao"			: "Sistema construtivo a seco Saint-Gobain - Light Steel Frame",
+		"numeroDiretriz" 	: "003",
+		"url"				: "../../_catalogos/inovador/datec/Datec_014.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "019",
+		"versao"			: "",
+		"diretriz" 			: "006",
+		"emissao"			: "Outubro de 2013",
+		"validade"			: "Setembro de 2015",
+		"proponente"		: "Saint-Gobain do Brasil Produtos Industriais e para Construção Ltda – Divisão Weber Saint Gobain",
+		"descricao"			: "Argamassa decorativa “Weberpral classic SE” para revestimentos monocamada",
+		"numeroDiretriz" 	: "006",
+		"url"				: "../../_catalogos/inovador/datec/Datec_019.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "020",
+		"versao"			: "",
+		"diretriz" 			: "005",
+		"emissao"			: "Outubro de 2013",
+		"validade"			: "Setembro de 2015",
+		"proponente"		: "TECVERDE Engenharia Ltda",
+		"descricao"			: "Sistema construtivo TECVERDE: 'Sistema leve em madeira'",
+		"numeroDiretriz" 	: "005",
+		"url"				: "../../_catalogos/inovador/datec/Datec_020.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "021",
+		"versao"			: "",
+		"diretriz" 			: "002",
+		"emissao"			: "Janeiro de 2014",
+		"validade"			: "Dezembro de 2015",
+		"proponente"		: "MOREFÁCIL CONSTRUTORA E INCORPORADORA LTDA",
+		"descricao"			: "Sistema Construtivo 'CASAS OLÉ - PAINÉIS PRÉ-MOLDADOS EM ALVENARIA COM BLOCOS CERÂMICOS E CONCRETO ARMADO'",
+		"numeroDiretriz" 	: "002",
+		"url"				: "../../_catalogos/inovador/datec/Datec_021.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "022",
+		"versao"			: "",
+		"diretriz" 			: "007",
+		"emissao"			: "Junho de 2014",
+		"validade"			: "Junho de 2016",
+		"proponente"		: "Precon Industrial S.A. - Precon VC",
+		"descricao"			: "Telhas de PVC PreconVC modelo Colonial Cerâmica",
+		"numeroDiretriz" 	: "007",
+		"url"				: "../../_catalogos/inovador/datec/Datec_022.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "023",
+		"versao"			: "",
+		"diretriz" 			: "002",
+		"emissao"			: "Setembro de 2014",
+		"validade"			: "Agosto de 2016",
+		"proponente"		: "Casa Express Construções e Empreendimentos Imobiliários Ltda.",
+		"descricao"			: "Painéis estruturais pré-moldados Casa Express, mistos de concreto armado e lajotas cerâmicas – Tipo A",
+		"numeroDiretriz" 	: "002",
+		"url"				: "../../_catalogos/inovador/datec/Datec_023.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "024",
+		"versao"			: "",
+		"diretriz" 			: "002",
+		"emissao"			: "Setembro de 2014",
+		"validade"			: "Agosto de 2016",
+		"proponente"		: "DPB (Domus Populi Brasitherm) Soluções Tecnológicas para Construção Civil S.A.",
+		"descricao"			: "Painéis nervurados préfabricados de concreto armado para paredes - DPB",
+		"numeroDiretriz" 	: "002",
+		"url"				: "../../_catalogos/inovador/datec/Datec_024.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "025",
+		"versao"			: "",
+		"diretriz" 			: "007",
+		"emissao"			: "Junho de 2015",
+		"validade"			: "Junho de 2017",
+		"proponente"		: "Precon Industrial S.A. - Precon VC",
+		"descricao"			: "Telhas de PVC PreconVC modelo Plan Cerâmica",
+		"numeroDiretriz" 	: "007",
+		"url"				: "../../_catalogos/inovador/datec/Datec_025.pdf"		
+	},
+	{
+		"tipo"				: "Datec",
+		"numeroDatec"		: "026",
+		"versao"			: "",
+		"diretriz" 			: "001",
+		"emissao"			: "Setembro de 2015",
+		"validade"			: "Agosto de 2016",
+		"proponente"		: "TECNNOMETTA INDÚSTRIA E COMÉRCIO LTDA.",
+		"descricao"			: "Paredes estruturais Tecnnometta de concreto leve armado moldadas no local.",
+		"numeroDiretriz" 	: "001",
+		"url"				: "../../_catalogos/inovador/datec/Datec_026.pdf"		
+	}
+	
+
+]
