@@ -14,12 +14,12 @@ use PDO;
 class Usuario extends Base
 {
     protected $table = 'catalogodesempenho.tab_usuario';
-    private $connection;
 
-    public function __construct()
-    {
-        $this->connection = Connection::connection();
-    }
+
+//    public function __construct()
+//    {
+//        $this->connection = Connection::connection();
+//    }
 
     public function consultaEmailUsuario($email)
     {
@@ -43,7 +43,7 @@ class Usuario extends Base
             $sql = 'SELECT cod_usuario, txt_nome, txt_email, txt_cpf_usuario
 					FROM catalogodesempenho.tab_usuario
 					WHERE txt_email LIKE :email';
-            $statement = $this->connection->prepare($sql);
+            $statement = $this->getConnection()->prepare($sql);
 
             $statement->bindValue('email', $email, PDO::PARAM_STR);
             $statement->execute();
@@ -63,7 +63,7 @@ class Usuario extends Base
             $sql = 'SELECT cod_usuario, txt_nome, txt_email, txt_cpf_usuario
 					FROM catalogodesempenho.tab_usuario
 					WHERE cod_usuario = :cod_usuario';
-            $statement = $this->connection->prepare($sql);
+            $statement = $this->getConnection()->prepare($sql);
 
             $statement->bindValue('cod_usuario', $id, PDO::PARAM_STR);
             $statement->execute();
@@ -89,7 +89,7 @@ class Usuario extends Base
                            cod_perfil_usuario
   	                FROM catalogodesempenho.tab_usuario
 	                WHERE txt_email ILIKE '" . $email . "' AND txt_senha ILIKE '" . $senha . "' LIMIT 1";
-            $statement = $this->connection->prepare($sql);
+            $statement = $this->getConnection()->prepare($sql);
             $statement->execute();
             $usuario = $statement->fetchAll(PDO::FETCH_ASSOC);
 

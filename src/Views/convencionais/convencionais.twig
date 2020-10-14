@@ -113,11 +113,12 @@
                 <td>{{ '{{ item.sistema}}' }}</td>
                 <td>{{ '{{ item.solucao}}' }}</td>
                 <td class="text-justify">{{ '{{item.descricao }}' }}</td>
-                <td class="text-center"><a ng-href="/convencionais/arquivos/pdf/{{ '{{ item.cod_catalogo_convencional }}' }}" download><i
-                                class="fa fa-file-pdf-o fa-4x"></i></a></td>
-                {#<td class="text-center"><a data-toggle="modal" data-target="#myModal"#}
-                {#ng-click="abrirModal(item.numero, item.url)"><i#}
-                {#class="fa fa-file-pdf-o fa-4x naoAvaliadoDoc"></i></a></td>#}
+
+                <td class="text-center">
+                    <a href="/convencionais/pdf/{{ '{{ item.cod_catalogo_convencional}}' }}"
+                       target="_blank"><i
+                                class="fa fa-file-pdf-o fa-4x"></i></a>
+                </td>
             </tr>
         </table>
         <div *ngFor="let item of catalogo.data">{{ item }}</div>
@@ -183,6 +184,16 @@
             }, function errorCallback(response) {
 
             });
+
+            // $scope.download = function () {
+            //     let params = {'id': this.item.cod_catalogo_convencional};
+            //     $http.get('/convencionais/arquivos/pdf/', {params}).then(function (response) {
+            //         console.log(response.data);
+            //         var file = new Blob([response.data], {type: 'application/pdf'});
+            //         var fileURL = URL.createObjectURL(file);
+            //         // window.open(fileURL);
+            //     })
+            // };
 
             $http({
                 method: 'GET',

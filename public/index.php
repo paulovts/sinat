@@ -29,8 +29,10 @@ require __DIR__ . '/includes/class.phpmailer.php';
 require __DIR__ . '/includes/class.smtp.php';
 require '../config/routes.php';
 $app->addErrorMiddleware(true, true, true);
+//$app->add( new App\Middleware\AuthMiddleware($container) );
 
-//$container->set('view', Twig::create('../src/Views'));
+//$app->add( new App\Middleware\Middleware($container));
+//$container->set('flash', fn ($container) => new Slim\Flash\Messages);
 $container->set('flash', function ($container) {
     return new  Slim\Flash\Messages;
 });
@@ -50,5 +52,4 @@ $container->set('view', function ($container) {
     ]);
     return $view;
 });
-
 $app->run();

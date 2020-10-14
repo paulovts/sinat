@@ -14,12 +14,18 @@ use PDO;
 abstract class Base
 {
 
-    private $connection;
+    protected static $connection;
 
-    public function __construct()
+    protected function getConnection()
     {
-        $this->connection = Connection::connection();
+
+        if (!self::$connection) {
+            self::$connection = Connection::connection();
+        }
+
+        return self::$connection;
     }
+
 
     public function getFileConvencionalId($id)
     {
@@ -27,7 +33,7 @@ abstract class Base
             $sql = 'SELECT txt_caminho_arquivo
 					FROM catalogodesempenho.tab_catalogo_convencional
 					WHERE cod_catalogo_convencional = :cod_catalogo_convencional';
-            $statement = $this->connection->prepare($sql);
+            $statement = $this->getConnection()->prepare($sql);
 
             $statement->bindValue('cod_catalogo_convencional', $id, PDO::PARAM_STR);
             $statement->execute();
@@ -44,7 +50,7 @@ abstract class Base
             $sql = 'SELECT txt_caminho_arquivo
 					FROM catalogodesempenho.tab_catalogo_datec
 					WHERE cod_catalogo_datec = :cod_catalogo_datec';
-            $statement = $this->connection->prepare($sql);
+            $statement = $this->getConnection()->prepare($sql);
 
             $statement->bindValue('cod_catalogo_datec', $id, PDO::PARAM_STR);
             $statement->execute();
@@ -61,7 +67,7 @@ abstract class Base
             $sql = 'SELECT txt_caminho_arquivo
 					FROM catalogodesempenho.tab_diretriz
 					WHERE cod_diretriz = :cod_diretriz';
-            $statement = $this->connection->prepare($sql);
+            $statement = $this->getConnection()->prepare($sql);
 
             $statement->bindValue('cod_diretriz', $id, PDO::PARAM_STR);
             $statement->execute();
@@ -109,7 +115,7 @@ abstract class Base
 						ORDER BY opc_sistema.txt_sistema, opc_solucao.txt_solucao 
 						) as catalogos';
 
-            $statement = $this->connection->prepare($sql);
+            $statement = $this->getConnection()->prepare($sql);
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_OBJ);
             while ($row = $statement->fetch()) {
@@ -143,7 +149,7 @@ abstract class Base
 						  ON tab_catalogo_datec.cod_diretriz = tab_diretriz.cod_diretriz 
 						  GROUP BY tab_diretriz.cod_diretriz, tab_diretriz.txt_descricao_diretriz, tab_diretriz.num_ultima_revisao, 		tab_diretriz.txt_caminho_arquivo
 						) as catalogos';
-            $statement = $this->connection->prepare($sql);
+            $statement = $this->getConnection()->prepare($sql);
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_OBJ);
             while ($row = $statement->fetch()) {
@@ -169,7 +175,7 @@ abstract class Base
                          catalogodesempenho.opc_sistema
                        ORDER BY opc_sistema.txt_sistema
                           ) as sistema';
-            $statement = $this->connection->prepare($sql) OR die(implode('', $this->connection->errorInfo()));
+            $statement = $this->getConnection()->prepare($sql) OR die(implode('', $this->getConnection()->errorInfo()));
 
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_OBJ);
@@ -197,7 +203,7 @@ abstract class Base
                               FROM 
                               catalogodesempenho.opc_solucao
 	                    ) AS solucao';
-            $statement = $this->connection->prepare($sql) OR die(implode('', $this->connection->errorInfo()));
+            $statement = $this->getConnection()->prepare($sql) OR die(implode('', $this->connection->errorInfo()));
 
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_OBJ);
@@ -230,7 +236,7 @@ abstract class Base
                     opc_sistema.txt_sistema, opc_solucao.txt_solucao
                   HAVING opc_sistema.txt_sistema ILIKE :txtSistema) AS solucao';
 
-            $statement = $this->connection->prepare($sql) OR die(implode('', $this->connection->errorInfo()));
+            $statement = $this->getConnection()->prepare($sql) OR die(implode('', $this->connection->errorInfo()));
             $statement->bindValue('txtSistema', $sistema['sistema'], PDO::PARAM_STR);
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_OBJ);
