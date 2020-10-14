@@ -185,16 +185,6 @@
 
             });
 
-            // $scope.download = function () {
-            //     let params = {'id': this.item.cod_catalogo_convencional};
-            //     $http.get('/convencionais/arquivos/pdf/', {params}).then(function (response) {
-            //         console.log(response.data);
-            //         var file = new Blob([response.data], {type: 'application/pdf'});
-            //         var fileURL = URL.createObjectURL(file);
-            //         // window.open(fileURL);
-            //     })
-            // };
-
             $http({
                 method: 'GET',
                 url: '/solucao/lista'
@@ -207,6 +197,7 @@
             }, function errorCallback(response) {
 
             });
+
             $scope.mudaSolucao = function (id) {
                 let params = {'sistema': id};
                 $http.get('/solucao/lista', {params}).then(function (response) {

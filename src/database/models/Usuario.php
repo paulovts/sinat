@@ -15,12 +15,6 @@ class Usuario extends Base
 {
     protected $table = 'catalogodesempenho.tab_usuario';
 
-
-//    public function __construct()
-//    {
-//        $this->connection = Connection::connection();
-//    }
-
     public function consultaEmailUsuario($email)
     {
 

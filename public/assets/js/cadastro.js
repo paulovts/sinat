@@ -1,7 +1,5 @@
-angular.module('cadastroApp', [])
+angular.module('myApp', ['ngAnimate'])
     .controller('CadastroController', ['$scope', '$http', function ($scope, $http) {
-
-
         $scope.IsVisibleConvencionais = false;
         $scope.IsVisibleInovadores = false;
         $scope.data = {
@@ -26,7 +24,7 @@ angular.module('cadastroApp', [])
         console.log($scope.data);
     }])
     .component('cadastroInovadores', {
-        templateUrl: '../Views/cadastro/inovadores.twig',
+        templateUrl: 'cadastro/inovadores',
         controller: function CadastroInovadoresController($scope, $http) {
             // this.submit = function (event) {
             //     const data = new FormData(event.target.closest('form'))
@@ -34,9 +32,10 @@ angular.module('cadastroApp', [])
         }
     })
     .component('cadastroConvencional', {
-        templateUrl: '../Views/cadastro/convencional.twig',
+        templateUrl: 'cadastro/convencional',
         controller: function CadastroConvencionalController($scope, $http) {
-
+            $scope.sistema = "";
+            $scope.solucao = "";
 
             // this.submit = function (event) {
             //
@@ -62,12 +61,31 @@ angular.module('cadastroApp', [])
             //
             // }
 
-            // $http.get('../controles/buscarSistema.php', []).then(function (result) {
-            //     $scope.listasistema = {
-            //         model: null,
-            //         options: result.data
-            //     };
-            // });
+            $http({
+                method: 'GET',
+                url: '/sistema/lista'
+            }).then(function successCallback(response) {
+                $scope.listaSistema = {
+                    model: null,
+                    options: response.data
+                };
+
+                console.log($scope.listaSistema);
+            }, function errorCallback(response) {
+
+            });
+
+            $scope.mudaSolucao = function (id) {
+                let params = {'sistema': id};
+                $http.get('/solucao/lista', {params}).then(function (response) {
+                    $scope.listaSolucao = {
+                        model: null,
+                        options: response.data
+                    };
+                });
+            }
+
+
             // $scope.pesquisaSolucao = function (id) {
             //     let params = {'id': id};
             //     $http.get('../controles/buscarSolucao.php', {params}).then(function (result) {

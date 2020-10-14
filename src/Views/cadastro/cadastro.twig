@@ -1,31 +1,30 @@
 {% extends 'Layouts/template.twig' %}
 {% block content %}
-    <div ng-app="cadastroApp" ng-controller="CadastroController">
+    <div ng-app="myApp" ng-controller="CadastroController">
         <div class="container">
             <div class="nome">
                 <H3>Upload de Documento</H3>
             </div>
-            <form id="formulario" method="post" action="">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label class="control-label ">Tipo de Sistema: *</label>
-                            <select class="form-control selectContainer" name='tiposistema'
-                                    ng-change="changeTipoSistema(data.model)"
-                                    ng-model="data.model">
-                                <option ng-repeat="option in data.options" value="{{option.id}}">{{option.label}}
-                                </option>
-                            </select>
-                        </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="control-label ">Tipo de Sistema: *</label>
+                        <select class="form-control selectContainer" name='tiposistema'
+                                ng-change="changeTipoSistema(data.model)"
+                                ng-model="data.model">
+                            <option ng-repeat="option in data.options"
+                                    value="{{ '{{ option.id }}' }}">{{ '{{ option.label}}' }}
+                            </option>
+                        </select>
                     </div>
                 </div>
-                <div ng-show="IsVisibleConvencionais">
-                    <cadastro-convencional></cadastro-convencional>
-                </div>
-                <div ng-show="IsVisibleInovadores">
-                    <cadastro-inovadores></cadastro-inovadores>
-                </div>
-            </form>
+            </div>
+            <div ng-show="IsVisibleConvencionais">
+                <cadastro-convencional></cadastro-convencional>
+            </div>
+            <div ng-show="IsVisibleInovadores">
+                <cadastro-inovadores></cadastro-inovadores>
+            </div>
         </div> <!-- FECHA CONTAINER -->
     </div>
 {% endblock %}

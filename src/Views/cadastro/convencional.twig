@@ -1,35 +1,66 @@
-{% extends 'Layouts/template.twig' %}
-{% block content %}
-    <div ng-controller="CadastroController">
-        <form id="formulario" method="post" action="">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="control-label ">Tipo de Sistema: *</label>
-                        <select class="form-control selectContainer" name='tiposistema'
-                                ng-change="changeTipoSistema(data.model)"
-                                ng-model="data.model">
-                            <option ng-repeat="option in data.options" value="{{option.id}}">{{option.label}}
-                            </option>
-                        </select>
-                    </div>
+<form method="POST" action="/cadastro/convencional/save" enctype="multipart/form-data">
+    <div id="dadosContato" class="show">
+        <div class="tituloForm">
+            <H4>Dados do Documento</H4>
+            <hr class="divider">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="control-label ">Sistema *</label>
+                    <select class="form-control selectContainer" name='sistema' ng-model="sistema"
+                            ng-change="mudaSolucao(sistema)">
+                        <option value="">Selecione...</option>
+                        <option ng-repeat="option in listaSistema.options" value="{{ '{{option.txt_sistema }}' }}">
+                            {{ '{{option.txt_sistema }}' }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="control-label">Solução *</label>
+                    <select class="form-control selectContainer" name='solucao' ng-model="listasolucao.model">
+                        <option value="">Selecione...</option>
+                        <option ng-repeat="option in listaSolucao.options" value="{{ '{{ option.txt_solucao}}' }}">
+                            {{ '{{ option.txt_solucao}}' }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="control-label">Data de emissão: *</label>
+                    <input type="date" class="form-control" id="data-emissao" name="data-emissao"
+                           placeholder="yyyy-MM-dd" required/>
+                </div>
+                <div class="col-md-3">
+                    <label class="control-label">Proponente: *</label>
+                    <input type="text" class="form-control" id="proponente" name="proponente"
+                           required/>
                 </div>
             </div>
-            <div ng-show="IsVisibleConvencionais">
-                <cadastro-convencional></cadastro-convencional>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label class="control-label">Selecione o Arquivo: *</label>
+                <input type="file" accept="application/pdf" class="form-control" name="fileToUpload"
+                       id="fileToUpload">
             </div>
-            <div ng-show="IsVisibleInovadores">
-                <cadastro-inovadores></cadastro-inovadores>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label class="control-label">Descrição *</label>
+
+                <textarea name="descricao" rows="6" class="form-control" placeholder="Insira sua descrição..."
+                          cols="80"></textarea>
             </div>
-        </form>
+        </div>
     </div>
-
-{% endblock %}
-
-{% block scripts %}
-    {{ parent() }}
-    <script>
-
-    </script>
-
-{% endblock %}
+    </div>
+    <div class="show">
+        <div class="row">
+            <div class="col-md-2">
+                <button type="submit" class=" btn btn-lg btn-primary">
+                    Upload
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
