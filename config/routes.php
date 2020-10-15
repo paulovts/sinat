@@ -41,4 +41,8 @@ $app->get('/documentos/arquivos/excel/{file}', Controllers\Documentos::class . '
 
 $app->group('', function () use ($app) {
     $app->get('/cadastro', Controllers\CadastroDocumentos::class . ':cadastroDocumento');
+    $app->get('/cadastro/inovadores', Controllers\CadastroDocumentos::class . ':cadastroInovadores');
+    $app->get('/cadastro/convencional', Controllers\CadastroDocumentos::class . ':cadastroConvencional');
+    $app->post('/cadastro/convencional/save', Controllers\CadastroDocumentos::class . ':saveConvencional');
+    $app->post('/cadastro/inovadores/save', Controllers\CadastroDocumentos::class . ':saveInovadores');
 })->add(new AuthMiddleware($container));
