@@ -1,5 +1,5 @@
 angular.module('myApp', ['ngAnimate'])
-    .controller('CadastroController', ['$scope', '$http', function ($scope, $http) {
+    .controller('CadastroController', ['$scope', '$http', '$filter', function ($scope, $http) {
         $scope.IsVisibleConvencionais = false;
         $scope.IsVisibleInovadores = false;
         $scope.data = {
@@ -21,14 +21,21 @@ angular.module('myApp', ['ngAnimate'])
                 $scope.IsVisibleConvencionais = false;
             }
         };
-        console.log($scope.data);
     }])
     .component('cadastroInovadores', {
         templateUrl: 'cadastro/inovadores',
         controller: function CadastroInovadoresController($scope, $http) {
-            // this.submit = function (event) {
-            //     const data = new FormData(event.target.closest('form'))
-            // }
+            $scope.tipoSistemaInovadores = "";
+
+            $scope.listaTipo = {
+                model: null,
+                options: [
+                    {id: '', label: 'Selecione...'},
+                    {id: '1', label: 'Diretriz'},
+                    {id: '2', label: 'DATec'}
+                ]
+            };
+
         }
     })
     .component('cadastroConvencional', {
@@ -36,30 +43,9 @@ angular.module('myApp', ['ngAnimate'])
         controller: function CadastroConvencionalController($scope, $http) {
             $scope.sistema = "";
             $scope.solucao = "";
-
-            // this.submit = function (event) {
-            //
-            //     const data = new FormData(event.target.closest('form'));
-            //
-            //     let file = data.get('fileToUpload');
-            //
-            //     let formData = new FormData();
-            //     formData.append('tiposistema', data.get('tiposistema'));
-            //     formData.append('sistema', data.get('sistema'));
-            //     formData.append('solucao', data.get('solucao'));
-            //     formData.append('data', data.get('data-emissao'));
-            //     formData.append('proponente', data.get('proponente'));
-            //     formData.append('file', file, file.name);
-            //     formData.append('descricao', data.get('descricao'));
-            //
-            //     $http({
-            //         method: 'POST',
-            //         url: '../controles/arquivoConvencional.php',
-            //         data: formData,
-            //         headers: {'Content-Type': 'multipart/form-data;boundary=----WebKitFormBoundaryyrV7KO0BoCBuDbTL'},
-            //     }).then((response) => response);
-            //
-            // }
+            $scope.descricao = "";
+            $scope.arquivo = [];
+            $scope.tiposistemaconvencional = "";
 
             $http({
                 method: 'GET',
@@ -69,15 +55,42 @@ angular.module('myApp', ['ngAnimate'])
                     model: null,
                     options: response.data
                 };
-
-                console.log($scope.listaSistema);
             }, function errorCallback(response) {
 
             });
 
+            $scope.submit = function () {
+                let formData = new FormData();
+
+                let dateformat = new Date(this.dataemissao);
+
+                let mesAtaual = dateformat.getMonth() + 1;
+                if (mesAtaual < 10) {
+                    mesAtaual = '0' + mesAtaual;
+                }
+                var datestring = dateformat.getFullYear() + "-" + mesAtaual + "-" + dateformat.getDate() + " ";
+                formData.append('dte_data_inclusao', datestring);
+                formData.append('cod_tipo_solucao', this.tiposistemaconvencional);
+                formData.append('file', this.arquivo, this.arquivo.name);
+
+                $http({
+                    method: 'POST',
+                    url: '/cadastro/convencional/save',
+                    data: formData,
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                }).then(function successCallback(response) {
+                    console.log(response);
+                }, function errorCallback(response) {
+
+                });
+            };
+
+
             $scope.mudaSolucao = function (id) {
                 let params = {'sistema': id};
                 $http.get('/solucao/lista', {params}).then(function (response) {
+
                     $scope.listaSolucao = {
                         model: null,
                         options: response.data
@@ -85,15 +98,25 @@ angular.module('myApp', ['ngAnimate'])
                 });
             }
 
+            $scope.prepareUpload = function (event) {
+                this.arquivo = event.target.files[0];
+            }
 
-            // $scope.pesquisaSolucao = function (id) {
-            //     let params = {'id': id};
-            //     $http.get('../controles/buscarSolucao.php', {params}).then(function (result) {
-            //         $scope.listasolucao = {
-            //             model: null,
-            //             options: result.data
-            //         };
-            //     });
-            // }
+
+            $scope.adicionaDescricao = function (id) {
+                $scope.descricao = this.listaTipoSolucao.options.find(function (element) {
+                    return element.cod_tipo_solucao === parseInt(id);
+                });
+            }
+
+            $scope.mudaTipoSolucao = function (id) {
+                let params = {'id': id};
+                $http.get('/tipo/lista', {params}).then(function (response) {
+                    $scope.listaTipoSolucao = {
+                        model: null,
+                        options: response.data
+                    };
+                });
+            }
         }
     })

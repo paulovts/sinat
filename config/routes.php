@@ -24,6 +24,7 @@ $app->get('/inovadores/lista', Controllers\Inovadores::class . ':listaDocumentos
 
 $app->get('/sistema/lista', Controllers\Sistema::class . ':listaSistema');
 $app->get('/solucao/lista', Controllers\Solucao::class . ':listaSolucao');
+$app->get('/tipo/lista', Controllers\TipoSolucaoController::class . ':listaTipoSolucao');
 
 
 $app->post('/auth', Controllers\AuthController::class . ':postSignIn');

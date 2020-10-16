@@ -38,6 +38,7 @@ class SolucaoSistema extends Base
 
             $sql = 'SELECT json_agg(solucao) as txt_json
                    FROM (SELECT
+                   catalogodesempenho.opc_solucao.cod_solucao,
                    catalogodesempenho.opc_sistema.txt_sistema,
                    catalogodesempenho.opc_solucao.txt_solucao
                   FROM
@@ -45,10 +46,10 @@ class SolucaoSistema extends Base
                      LEFT JOIN catalogodesempenho.opc_solucao
                      ON opc_sistema.cod_sistema = opc_solucao.cod_sistema
                   GROUP BY
-                    opc_sistema.txt_sistema, opc_solucao.txt_solucao
+                    opc_sistema.txt_sistema, opc_solucao.txt_solucao, opc_solucao.cod_solucao
                   HAVING opc_sistema.txt_sistema ILIKE :txtSistema) AS solucao';
 
-            $statement = $this->getConnection()->prepare($sql) OR die(implode('', $this->connection->errorInfo()));
+            $statement = $this->getConnection()->prepare($sql) OR die(implode('', $this->getConnection()->errorInfo()));
             $statement->bindValue('txtSistema', $sistema['sistema'], PDO::PARAM_STR);
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_OBJ);
@@ -76,7 +77,7 @@ class SolucaoSistema extends Base
                               FROM 
                               catalogodesempenho.opc_solucao
 	                    ) AS solucao';
-            $statement = $this->getConnection()->prepare($sql) OR die(implode('', $this->connection->errorInfo()));
+            $statement = $this->getConnection()->prepare($sql) OR die(implode('', $this->getConnection()->errorInfo()));
 
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_OBJ);

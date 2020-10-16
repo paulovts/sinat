@@ -12,6 +12,7 @@ namespace App\Controllers;
 use App\database\models\DocumentosConvencionais;
 use App\database\models\SolucaoSistema;
 use Psr\Container\ContainerInterface;
+use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Psr7\UploadedFile;
 
@@ -52,53 +53,46 @@ class CadastroDocumentos
         );
     }
 
-    public function saveConvencional($request, $response, $args)
+    public function saveConvencional(Request $request, $response, $args)
     {
-        $directory = '../_catalogos/convencional';
-
+        $params = $request->getParsedBody();
         $uploadedFiles = $request->getUploadedFiles();
 
-        $params = $request->getParsedBody();
+        $directory = '../_catalogos/convencional';
 
-        $solucaoModel = new SolucaoSistema();
-
-        $caminho = '_catalogos/convencional/' . $uploadedFiles['fileToUpload']->getClientFilename();
+        $caminho = '_catalogos/convencional/' . $uploadedFiles['file']->getClientFilename();
 
         $existe = $this->convencional->existeFiLeName($caminho);
 
-
         if ($existe) {
             $this->container->get('flash')->addMessage('error', 'Arquivo já cadastrado no sistema');
+            $message = 'Arquivo já cadastrado no sistema ';
             return (new Response())
-                ->withHeader('Location', '/cadastro')
-                ->withStatus(302);
+                ->withStatus(302)->withBody($message);
         }
 
-        $nomeArquivo = str_replace('.pdf', "", $uploadedFiles['fileToUpload']->getClientFilename());
-
-        $idSistema = $solucaoModel->getSistemaBySolucao($params['solucao']);
+        $nomeArquivo = str_replace('.pdf', "", $uploadedFiles['file']->getClientFilename());
 
         $arrDados = [
             'txt_cod_ficha' => $nomeArquivo,
-            'dte_data_inclusao' => $params['data-emissao'],
+            'dte_data_inclusao' => $params['dte_data_inclusao'],
             'dte_data_edicao' => null,
-            'cod_tipo_solucao' => $idSistema,
+            'cod_tipo_solucao' => $params['cod_tipo_solucao'],
             'txt_caminho_arquivo' => $caminho,
             'cod_usuario_insercao' => $_SESSION['cod_usuario'],
             'bln_ativo' => true,
         ];
+
         $modelConvencional = new DocumentosConvencionais();
 
         $retorno = $modelConvencional->save($arrDados);
 
         if ($retorno) {
-
-            $uploadedFile = $uploadedFiles['fileToUpload'];
+            $uploadedFile = $uploadedFiles['file'];
 
             if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
                 $this->moveUploadedFile($directory, $uploadedFile);
             }
-
             $this->container->get('flash')->addMessage('info', 'Arquivo cadastro com Successo!');
             return (new Response())
                 ->withHeader('Location', '/cadastro')
@@ -107,7 +101,6 @@ class CadastroDocumentos
         } else {
             $this->container->get('flash')->addMessage('error', 'Não foi Possível salvar o Arquivo!');
             return (new Response())
-                ->withHeader('Location', '/cadastro')
                 ->withStatus(302);
         }
     }
