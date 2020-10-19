@@ -1,5 +1,5 @@
-angular.module('myApp', ['ngAnimate'])
-    .controller('CadastroController', ['$scope', '$http', '$filter', function ($scope, $http) {
+angular.module('myApp', ['ngAnimate', 'ngFlash'])
+    .controller('CadastroController', ['$scope', '$http', 'Flash', function ($scope, $http, Flash) {
         $scope.IsVisibleConvencionais = false;
         $scope.IsVisibleInovadores = false;
         $scope.data = {
@@ -80,7 +80,13 @@ angular.module('myApp', ['ngAnimate'])
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 }).then(function successCallback(response) {
-                    console.log(response);
+
+                    if (response.data.status === false) {
+                      alert('Arquivo já cadastrado no sistema!')
+                    }else{
+                        window.location = '/cadastro'
+                    }
+
                 }, function errorCallback(response) {
 
                 });

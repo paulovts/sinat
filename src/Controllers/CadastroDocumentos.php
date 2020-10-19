@@ -53,7 +53,7 @@ class CadastroDocumentos
         );
     }
 
-    public function saveConvencional(Request $request, $response, $args)
+    public function saveConvencional(Request $request, Response $response, $args)
     {
         $params = $request->getParsedBody();
         $uploadedFiles = $request->getUploadedFiles();
@@ -65,10 +65,13 @@ class CadastroDocumentos
         $existe = $this->convencional->existeFiLeName($caminho);
 
         if ($existe) {
-            $this->container->get('flash')->addMessage('error', 'Arquivo já cadastrado no sistema');
-            $message = 'Arquivo já cadastrado no sistema ';
-            return (new Response())
-                ->withStatus(302)->withBody($message);
+//            $this->container->get('flash')->addMessage('error', 'Arquivo já cadastrado no sistema');
+
+            $message = ['error' => 'Arquivo já cadastrado no sistema', 'status' => false];
+            $data = json_encode($message);
+            $response->getBody()->write("$data");
+
+            return $response;
         }
 
         $nomeArquivo = str_replace('.pdf', "", $uploadedFiles['file']->getClientFilename());
