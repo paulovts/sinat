@@ -1,34 +1,85 @@
-<form method="POST" action="/cadastro/convencional/save" enctype="multipart/form-data">
-    <div id="dadosContato" class="show">
+<div class="well">
+    <div class="show">
         <div class="tituloForm">
             <H4>Dados do Documento</H4>
             <hr class="divider">
         </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-3">
-                    <label class="control-label ">Tipo *</label>
-                    <select class="form-control selectContainer" name='sistema' ng-model="tiposistema">
-                        <option ng-repeat="option in listaTipo.options" value="{{ '{{option.id }}' }}">
-                            {{ '{{option.label }}' }}
-                        </option>
-                    </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label ">Tipo *</label>
+        <select class="form-control selectContainer" ng-change="escondecampos(tipoSistemaInovadores)"
+                required
+                name='sistema' ng-model="tipoSistemaInovadores">
+            <option ng-repeat="option in listaTipo.options" value="{{ '{{option.id }}' }}">
+                {{ '{{option.label }}' }}
+            </option>
+        </select>
+    </div>
+    <form method="POST" ng-show="visibleDiretriz" ng-controller="CadastroController" ng-submit="submitDiretriz()"
+          enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Revisao</label>
+                    <input type="text" class="form-control" id="revisao" ng-model="revisao" name="revisao"
+                           required/>
                 </div>
-                <div class="col-md-3">
-                    <label class="control-label">Datec N*</label>
-                    <select class="form-control selectContainer" name='solucao' ng-model="listasolucao.model">
-                        <option value="">Selecione...</option>
-                        <option ng-repeat="option in listaSolucao.options" value="{{ '{{ option.txt_solucao}}' }}">
-                            {{ '{{ option.txt_solucao}}' }}
-                        </option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label class="control-label">Data de emissão: *</label>
-                    <input type="date" class="form-control" id="data-emissao" name="data-emissao"
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Data de Publicação: *</label>
+                    <input type="date" class="form-control" id="publicacao-diretriz" ng-model="publicacaodiretriz"
+                           name="publicacao-diretriz"
                            placeholder="yyyy-MM-dd" required/>
                 </div>
-                <div class="col-md-3">
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Selecione o Arquivo: *</label>
+                    <input type="file" accept="application/pdf" class="form-control" ng-model="arquivoDiretriz"
+                           onchange="angular.element(this).scope().prepareUpload(event)"
+                           id="arquivo">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <label class="control-label">Descrição *</label>
+                <textarea name="descricao" rows="6" ng-model="descricao"
+                          class="form-control" placeholder=""
+                          cols="80"></textarea>
+            </div>
+        </div>
+        <br>
+        <div class="form-actions">
+            <button type="submit" class=" btn btn-lg btn-primary">
+                Upload
+            </button>
+        </div>
+    </form>
+
+    <form method="POST" ng-show="visibleDatec" ng-controller="CadastroController" ng-submit="submitDatec()"
+          enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Datec N*</label>
+                    <input type="text" class="form-control" id="numerodatec" name="numerodatec" ng-model="numerodatec"
+                           restrict-input="^[0-9-]*$"
+                           required/>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Versão: *</label>
+                    <input type="text" class="form-control" id="versao" name="versao" ng-model="versao"
+                           pattern="[a-z\s]+$"
+                           required/>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
                     <label class="control-label">Proponente: *</label>
                     <input type="text" class="form-control" id="proponente" name="proponente"
                            required/>
@@ -36,29 +87,58 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <label class="control-label">Selecione o Arquivo: *</label>
-                <input type="file" accept="application/pdf" class="form-control" name="fileToUpload"
-                       id="fileToUpload">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label">Data de Publicação: *</label>
+                    <input type="date" class="form-control" id="publicacaodatec" name="publicacaodatec"
+                           ng-model="publicacaodatec"
+                           placeholder="yyyy-MM-dd" required/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label">Data de validade: *</label>
+                    <input type="date" class="form-control" id="validadedatec" name="validadedatec"
+                           ng-model="validadedatec"
+                           placeholder="yyyy-MM-dd" required/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label ">Diretriz Associada *</label>
+                    <select class="form-control selectContainer" name='diretrizassociada' ng-model="diretrizassociada">
+                        <option value="">Selecione...</option>
+                        <option ng-repeat="option in listaDiretriz.options" value="{{ '{{option.cod_diretriz }}' }}">
+                            Diretriz SiNAT nº {{ '{{option.cod_diretriz }}' }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Selecione o Arquivo: *</label>
+                    <input type="file" accept="application/pdf" class="form-control" ng-model="arquivoDatec"
+                           onchange="angular.element(this).scope().prepareUploadDatec(event)"
+                           id="arquivo">
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <label class="control-label">Descrição *</label>
-
-                <textarea name="descricao" rows="6" class="form-control" placeholder="Insira sua descrição..."
+                <textarea name="descricao" rows="6" ng-model="descricaodatec"
+                          class="form-control" placeholder=""
                           cols="80"></textarea>
             </div>
         </div>
-    </div>
-    </div>
-    <div class="show">
-        <div class="row">
-            <div class="col-md-2">
-                <button type="submit" class=" btn btn-lg btn-primary">
-                    Upload
-                </button>
-            </div>
+        <br>
+        <div class="form-actions">
+            <button type="submit" class=" btn btn-lg btn-primary">
+                Upload
+            </button>
         </div>
-    </div>
-</form>
+    </form>
+
+</div>

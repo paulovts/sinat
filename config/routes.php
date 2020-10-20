@@ -44,6 +44,8 @@ $app->group('', function () use ($app) {
     $app->get('/cadastro', Controllers\CadastroDocumentos::class . ':cadastroDocumento');
     $app->get('/cadastro/inovadores', Controllers\CadastroDocumentos::class . ':cadastroInovadores');
     $app->get('/cadastro/convencional', Controllers\CadastroDocumentos::class . ':cadastroConvencional');
-    $app->post('/cadastro/convencional/save', Controllers\CadastroDocumentos::class . ':saveConvencional');
-    $app->post('/cadastro/inovadores/save', Controllers\CadastroDocumentos::class . ':saveInovadores');
+    $app->get('/diretriz/list', Controllers\CadastroDocumentos::class . ':getListDiretriz');
+    $app->post('/save/convencional', Controllers\CadastroDocumentos::class . ':saveConvencional');
+    $app->post('/save/diretriz', Controllers\CadastroDocumentos::class . ':saveInovadoresDiretriz');
+    $app->post('/save/datec', Controllers\CadastroDocumentos::class . ':saveInovadoresDatec');
 })->add(new AuthMiddleware($container));

@@ -47,6 +47,9 @@ class Inovadores
         return $response;
     }
 
+
+
+
     public function downloadDatecPDF(Request $request, Response $response, $args)
     {
         $retorno = $this->inovadores->getFileInovadoreslDatecId($args['id']);
