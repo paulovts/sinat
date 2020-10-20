@@ -99,7 +99,7 @@ class CadastroDocumentos
             if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
                 $this->moveUploadedFile($directory, $uploadedFile);
             }
-            $this->container->get('flash')->addMessage('info', 'Arquivo cadastro com Successo!');
+            $this->container->get('flash')->addMessage('info', 'Arquivo cadastrodo com Successo!');
             return (new Response())
                 ->withHeader('Location', '/cadastro')
                 ->withStatus(302);
@@ -157,7 +157,7 @@ class CadastroDocumentos
             if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
                 $this->moveUploadedFile($directory, $uploadedFile);
             }
-            $this->container->get('flash')->addMessage('info', 'Arquivo cadastro com Successo!');
+            $this->container->get('flash')->addMessage('info', 'Arquivo cadastrodo com Successo!');
             return (new Response())
                 ->withHeader('Location', '/cadastro')
                 ->withStatus(302);
@@ -188,8 +188,6 @@ class CadastroDocumentos
             return $response;
         }
 
-        var_dump($params);
-        die;
         $arrDados = [
             'txt_descricao_datec' => $params['txt_descricao_diretriz'],
             'bln_vencido' => false,
@@ -213,7 +211,7 @@ class CadastroDocumentos
             if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
                 $this->moveUploadedFile($directory, $uploadedFile);
             }
-            $this->container->get('flash')->addMessage('info', 'Arquivo cadastro com Successo!');
+            $this->container->get('flash')->addMessage('info', 'Arquivo cadastrodo com Successo!');
             return (new Response())
                 ->withHeader('Location', '/cadastro')
                 ->withStatus(302);

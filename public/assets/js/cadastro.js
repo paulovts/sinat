@@ -142,7 +142,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                     if (response.data.status === false) {
                         alert('Arquivo já cadastrado no sistema!')
                     } else {
-                        // window.location = '/cadastro'
+                        window.location = '/cadastro'
                     }
 
                 }, function errorCallback(response) {
