@@ -36,7 +36,7 @@ class Documentos
 
     public function downloadPDF(Request $request, Response $response, $args)
     {
-        $file = '../_catalogos/documentos/' . $args['file'] . '.pdf';
+        $file = './_catalogos/documentos/' . $args['file'] . '.pdf';
 
         $fh = fopen($file, 'r');
 
@@ -50,7 +50,7 @@ class Documentos
 
     public function downloadExcel(Request $request, Response $response, $args)
     {
-        $file = '../_catalogos/documentos/' . $args['file'] . '.xlsx';
+        $file = './_catalogos/documentos/' . $args['file'] . '.xlsx';
 
         $fh = fopen($file, 'r');
 

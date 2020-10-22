@@ -54,7 +54,7 @@ class Inovadores
     {
         $retorno = $this->inovadores->getFileInovadoreslDatecId($args['id']);
 
-        $fh = fopen('../' . $retorno[0], 'r');
+        $fh = fopen('./' . $retorno[0], 'r');
         if ($fh) {
             $stream = new \Slim\Psr7\Stream($fh);
             return $response->withHeader('Content-Type', 'application/pdf')
@@ -70,7 +70,7 @@ class Inovadores
     {
         $retorno = $this->inovadores->getFileInovadoreslDiretrizId($args['id']);
 
-        $fh = fopen('../' . $retorno[0], 'r');
+        $fh = fopen('./' . $retorno[0], 'r');
         if ($fh) {
             $stream = new \Slim\Psr7\Stream($fh);
             return $response->withHeader('Content-Type', 'application/pdf')

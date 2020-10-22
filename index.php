@@ -5,7 +5,7 @@ set_include_path(
         PATH_SEPARATOR,
         [
             // Composer path
-            realpath(dirname(__FILE__) . '/../vendor')
+            realpath(dirname(__FILE__) . '/vendor')
         ]
     )
 );
@@ -25,9 +25,9 @@ $container = new Container();
 AppFactory::setContainer($container);
 
 $app = AppFactory::create();
-require __DIR__ . '/includes/class.phpmailer.php';
-require __DIR__ . '/includes/class.smtp.php';
-require '../config/routes.php';
+require __DIR__ . '/public/includes/class.phpmailer.php';
+require __DIR__ . '/public/includes/class.smtp.php';
+require './config/routes.php';
 $app->addErrorMiddleware(true, true, true);
 //$app->add( new App\Middleware\AuthMiddleware($container) );
 
@@ -42,7 +42,7 @@ $container->set('auth', function ($container) {
 });
 
 $container->set('view', function ($container) {
-    $view = Twig::create('../src/Views', ['cache' => false]);
+    $view = Twig::create('./src/Views', ['cache' => false]);
     $environment = $view->getEnvironment();
     $environment->addGlobal('flash', $container->get(\Slim\Flash\Messages::class));
 
