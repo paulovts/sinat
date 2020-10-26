@@ -52,5 +52,4 @@ $container->set('view', function ($container) {
     ]);
     return $view;
 });
-var_dump('teste');die;
 $app->run();
