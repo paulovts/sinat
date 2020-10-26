@@ -36,6 +36,8 @@ class AuthController
 
         $retorno = $this->auth->attempt($data['username'], $data['password']);
 
+        var_dump($retorno);
+
         if ($retorno) {
             return $response->withStatus(302)->withHeader('Location', '/cadastro');
         } else {
