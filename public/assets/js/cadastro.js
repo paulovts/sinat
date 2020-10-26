@@ -54,7 +54,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
 
             $http({
                 method: 'GET',
-                url: '/diretriz/list'
+                url: '/sinat/diretriz/list'
             }).then(function successCallback(response) {
                 $scope.listaDiretriz = {
                     model: null,
@@ -89,7 +89,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                 formData.append('dte_data_pulicacao_diretriz', dateDiretriz);
                 $http({
                     method: 'POST',
-                    url: '/save/diretriz',
+                    url: '/sinat/save/diretriz',
                     data: formData,
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
@@ -98,7 +98,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                     if (response.data.status === false) {
                         alert('Arquivo já cadastrado no sistema!')
                     } else {
-                        window.location = '/cadastro'
+                        window.location = '/sinat/cadastro'
                     }
 
                 }, function errorCallback(response) {
@@ -134,7 +134,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
 
                 $http({
                     method: 'POST',
-                    url: '/save/datec',
+                    url: '/sinat/save/datec',
                     data: formData,
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
@@ -142,7 +142,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                     if (response.data.status === false) {
                         alert('Arquivo já cadastrado no sistema!')
                     } else {
-                        window.location = '/cadastro'
+                        window.location = '/sinat/cadastro'
                     }
 
                 }, function errorCallback(response) {
@@ -162,7 +162,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
 
             $http({
                 method: 'GET',
-                url: '/sistema/lista'
+                url: '/sinat/sistema/lista'
             }).then(function successCallback(response) {
                 $scope.listaSistema = {
                     model: null,
@@ -188,7 +188,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                 console.log('não pode entrar aqui')
                 $http({
                     method: 'POST',
-                    url: '/save/convencional',
+                    url: '/sinat/save/convencional',
                     data: formData,
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
@@ -197,7 +197,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                     if (response.data.status === false) {
                         alert('Arquivo já cadastrado no sistema!')
                     } else {
-                        window.location = '/cadastro'
+                        window.location = '/sinat/cadastro'
                     }
 
                 }, function errorCallback(response) {
@@ -208,7 +208,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
 
             $scope.mudaSolucao = function (id) {
                 let params = {'sistema': id};
-                $http.get('/solucao/lista', {params}).then(function (response) {
+                $http.get('/sinat/solucao/lista', {params}).then(function (response) {
 
                     $scope.listaSolucao = {
                         model: null,
@@ -230,7 +230,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
 
             $scope.mudaTipoSolucao = function (id) {
                 let params = {'id': id};
-                $http.get('/tipo/lista', {params}).then(function (response) {
+                $http.get('/sinat/tipo/lista', {params}).then(function (response) {
                     $scope.listaTipoSolucao = {
                         model: null,
                         options: response.data

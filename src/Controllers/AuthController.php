@@ -36,10 +36,8 @@ class AuthController
 
         $retorno = $this->auth->attempt($data['username'], $data['password']);
 
-        var_dump($retorno);
-
         if ($retorno) {
-            return $response->withStatus(302)->withHeader('Location', '/cadastro');
+            return $response->withStatus(302)->withHeader('Location', '/sinat/cadastro');
         } else {
             $this->container->get('flash')->addMessage('error', 'Usuário ou senhas inválidos');
             return $response->withStatus(302)->withHeader('Location', '/');

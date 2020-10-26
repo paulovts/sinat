@@ -11,13 +11,13 @@
                  objetivo a harmonização de procedimentos para a avaliação técnica de Sistemas Inovadores e
                  Convencionais
                  da Construção Civil no Brasil.</p><br>
-             <img src="./public/assets/img/imgSINAT.png" class="img-responsive"/>
+             <img src="/../public/assets/img/imgSINAT.png" class="img-responsive"/>
          </div>
          <div class="col-md-4">
              <div class="card">
                  <h3 class="card-header text-center">ÁREA DE ACESSO</h3>
                  <div class="card-block">
-                     <form action="/auth" method="POST">
+                     <form action="sinat/auth" method="POST">
                          <div class="form-group">
                              <label for="username" class="col-2 col-form-label">Email</label>
                              <div class="col-10">
@@ -143,7 +143,7 @@
                 var $form = $(e.target),        // The form instance
                     fv = $(e.target).data('formValidation'); // FormValidation instance
                 // Do something ...
-                $.get("/consultarEmail?email=" + emailEsqueci + "", function (resultado) {
+                $.get("/sinat/consultarEmail?email=" + emailEsqueci + "", function (resultado) {
                     console.log(resultado);
                     if (resultado == 1) {
                         bootbox.dialog({
