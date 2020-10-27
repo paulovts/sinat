@@ -29,6 +29,7 @@ class ComposerStaticInitf53fa52025e6b4927fc2e8aa9621e12d
             'Slim\\Flash\\' => 11,
             'Slim\\Csrf\\' => 10,
             'Slim\\' => 5,
+            'Selective\\BasePath\\' => 19,
         ),
         'P' => 
         array (
@@ -93,6 +94,10 @@ class ComposerStaticInitf53fa52025e6b4927fc2e8aa9621e12d
         'Slim\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
+        ),
+        'Selective\\BasePath\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/selective/basepath/src',
         ),
         'Psr\\Log\\' => 
         array (
