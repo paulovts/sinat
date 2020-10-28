@@ -85,20 +85,20 @@
 
         <hr>
 
-        <h1 id="titulo_result">{{ '{{titulo }}' }}</h1>
-        <div ng-show="emAvaliacao">
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h3 class="panel-title" ng-class="{naoAvaliadoPulse: emAvaliacao}"
-                        style="text-align:center; font-weight: bold">ATENÇÃO</h3>
-                </div>
-                <div class="panel-body">
-                    As soluções das fichas disponibilizadas abaixo não têm resultados de ensaios suficientes para
-                    comprovação de desempenho. A utilização destas soluções requer o acompanhamento de uma <strong>Instituição
-                        Técnica Avaliadora (ITA)</strong>.
-                </div>
-            </div>
-        </div>
+        {#<h1 id="titulo_result">{{ '{{titulo }}' }}</h1>#}
+        {#<div ng-show="emAvaliacao">#}
+        {#<div class="panel panel-danger">#}
+        {#<div class="panel-heading">#}
+        {#<h3 class="panel-title" ng-class="{naoAvaliadoPulse: emAvaliacao}"#}
+        {#style="text-align:center; font-weight: bold">ATENÇÃO</h3>#}
+        {#</div>#}
+        {#<div class="panel-body">#}
+        {#As soluções das fichas disponibilizadas abaixo não têm resultados de ensaios suficientes para#}
+        {#comprovação de desempenho. A utilização destas soluções requer o acompanhamento de uma <strong>Instituição#}
+        {#Técnica Avaliadora (ITA)</strong>.#}
+        {#</div>#}
+        {#</div>#}
+        {#</div>#}
         <table id="tabelaCatalogo" class="table table-bordered">
 
             <tr>
@@ -115,7 +115,7 @@
                 <td class="text-justify">{{ '{{item.descricao }}' }}</td>
 
                 <td class="text-center">
-                    <a href="/convencionais/pdf/{{ '{{ item.cod_catalogo_convencional}}' }}"
+                    <a href="{{ constant('API_BASE_URL') }}/convencionais/pdf/{{ '{{ item.cod_catalogo_convencional}}' }}"
                        target="_blank"><i
                                 class="fa fa-file-pdf-o fa-4x"></i></a>
                 </td>
@@ -153,7 +153,7 @@
 
 {% block scripts %}
     {{ parent() }}
-    <script>
+    <script type="text/javascript">
 
         let catalogoConvencional = angular.module('myApp', ['ngAnimate']);
 
@@ -161,10 +161,9 @@
             $scope.ordem = 'sistema';
             $scope.sistema = "";
             $scope.solucao = "";
-
             $http({
                 method: 'GET',
-                url: '/convencionais/lista'
+                url: '{{ constant('API_BASE_URL') }}' + '/convencionais/lista',
             }).then(function successCallback(response) {
                 $scope.catalogo = response.data;
             }, function errorCallback(response) {
@@ -174,7 +173,7 @@
             $scope.emAvaliacao = false;
             $http({
                 method: 'GET',
-                url: '/sistema/lista'
+                url: '{{ constant('API_BASE_URL') }}' + '/sistema/lista'
             }).then(function successCallback(response) {
                 $scope.listaSistema = {
                     model: null,
@@ -187,7 +186,7 @@
 
             $http({
                 method: 'GET',
-                url: '/solucao/lista'
+                url: '{{ constant('API_BASE_URL') }}' + '/solucao/lista'
             }).then(function successCallback(response) {
                 $scope.listaSolucao = {
                     model: null,
@@ -200,7 +199,7 @@
 
             $scope.mudaSolucao = function (id) {
                 let params = {'sistema': id};
-                $http.get('/solucao/lista', {params}).then(function (response) {
+                $http.get('{{ constant('API_BASE_URL') }}' + '/solucao/lista', {params}).then(function (response) {
                     $scope.listaSolucao = {
                         model: null,
                         options: response.data

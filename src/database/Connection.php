@@ -24,10 +24,18 @@ abstract class Connection
             return static::$pdo;
         }
         try {
-            static::$pdo = new PDO('pgsql:host=192.168.10.113;port=5432;dbname=sinat', 'postgres', 'pg01', [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-            ]);
+            // Capturando a configuração do banco
+            $settings = require(__DIR__ . '/../../config/database.php');
+
+            static::$pdo = new PDO(
+                $settings[APP_ENV]['db']['dsn'],
+                $settings[APP_ENV]['db']['username'],
+                $settings[APP_ENV]['db']['password'],
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+                ]
+            );
             return static::$pdo;
         } catch (PDOException $e) {
             var_dump($e->getMessage());

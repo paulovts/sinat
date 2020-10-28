@@ -34,14 +34,13 @@ class Convencionais
 
     public function home($request, $response, $args)
     {
-        return
-            $this->container->get('view')->render(
-                $response,
-                'convencionais/convencionais.twig',
-                [
-                    'title' => 'Documentos Convencionais'
-                ]
-            );
+        return $this->container->get('view')->render(
+            $response,
+            'convencionais/convencionais.twig',
+            [
+                'title' => 'Documentos Convencionais'
+            ]
+        );
     }
 
     public function downloadPDF(Request $request, Response $response, $args)

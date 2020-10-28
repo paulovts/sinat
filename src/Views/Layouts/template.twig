@@ -8,29 +8,29 @@
           type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/../public/assets/css/font-awesome-4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="/../public/assets/js/angular-1.8.1/docs/components/bootstrap-3.1.1/css/bootstrap.css">
-    <link rel="stylesheet" href="/../public/assets/css/formValidation.min.css">
-    <link rel="stylesheet" href="/../public/assets/css/norma.css">
-    <link rel="stylesheet" href="/../public/assets/js/angular-1.8.1/angular-flash.css">
-    <script src="/../public/assets/js/metronic/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../public/assets/css/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../public/assets/js/angular-1.8.1/docs/components/bootstrap-3.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="../public/assets/css/formValidation.min.css">
+    <link rel="stylesheet" href="../public/assets/css/norma.css">
+    <link rel="stylesheet" href="../public/assets/js/angular-1.8.1/angular-flash.css">
+    <script src="../public/assets/js/metronic/global/plugins/jquery.min.js" type="text/javascript"></script>
 
-    <script src="/../public/assets/js/formValidation/formValidation.min.js" type="text/javascript"></script>
-    <script src="/../public/assets/js/formValidation/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../public/assets/js/formValidation/formValidation.min.js" type="text/javascript"></script>
+    <script src="../public/assets/js/formValidation/bootstrap.min.js" type="text/javascript"></script>
     {#<script  src=./assets/js/pt_BR.js" type="text/javascript"></script>#}
-    <script src="/../public/assets/js/metronic/global/plugins/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="../public/assets/js/metronic/global/plugins/bootstrap/js/bootstrap.js" type="text/javascript"></script>
     <script src="http://barra.brasil.gov.br/barra.js" type="text/javascript" defer async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"
             type="text/javascript"></script>
     {#<script src="./assets/js/catalogoConvencional.js"></script>#}
 
 
-    <script type="text/javascript" src="/../public/assets/js/angular-1.8.1/angular.min.js"></script>
-    <script type="text/javascript" src="/../public/assets/js/angular-1.8.1/angular-animate.js"></script>
-    <script type="text/javascript" src="/../public/assets/js/angular-1.8.1/angular-resource.min.js"></script>
-    <script type="text/javascript" src="/../public/assets/js/angular-1.8.1/app.js"></script>
-    <script type="text/javascript" src="/../public/assets/js/cadastro.js"></script>
-    <script type="text/javascript" src="/../public/assets/js/angular-1.8.1/angular-flash.js"></script>
+    <script type="text/javascript" src="../public/assets/js/angular-1.8.1/angular.min.js"></script>
+    <script type="text/javascript" src="../public/assets/js/angular-1.8.1/angular-animate.js"></script>
+    <script type="text/javascript" src="../public/assets/js/angular-1.8.1/angular-resource.min.js"></script>
+    <script type="text/javascript" src="../public/assets/js/angular-1.8.1/app.js"></script>
+    <script type="text/javascript" src="../public/assets/js/cadastro.js"></script>
+    <script type="text/javascript" src="../public/assets/js/angular-1.8.1/angular-flash.js"></script>
     {#<script src="./assets/js/angular/controllers.js"></script>#}
 
     {% block styles %}{% endblock %}
@@ -43,6 +43,7 @@
     <title>{{ title }}</title>
 </head>
 <body>
+
 {% include'Layouts/partials/header.twig' %}
 {% include'Layouts/partials/menu.twig' %}
 {% include'Layouts/partials/flash.twig' %}
@@ -51,7 +52,9 @@
 </div>
 {% include'Layouts/partials/footer.twig' %}
 {% block scripts %}
-
+<script type="text/javascript">
+   const API_BASE_URL = '{{ constant('API_BASE_URL')}}'
+</script>
 {% endblock %}
 </body>
 </html>

@@ -54,7 +54,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
 
             $http({
                 method: 'GET',
-                url: '/sinat/diretriz/list'
+                url: API_BASE_URL + '/diretriz/list'
             }).then(function successCallback(response) {
                 $scope.listaDiretriz = {
                     model: null,
@@ -89,7 +89,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                 formData.append('dte_data_pulicacao_diretriz', dateDiretriz);
                 $http({
                     method: 'POST',
-                    url: '/sinat/save/diretriz',
+                    url: API_BASE_URL + '/save/diretriz',
                     data: formData,
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
@@ -98,7 +98,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                     if (response.data.status === false) {
                         alert('Arquivo já cadastrado no sistema!')
                     } else {
-                        window.location = '/sinat/cadastro'
+                        window.location = API_BASE_URL + '/cadastro'
                     }
 
                 }, function errorCallback(response) {
@@ -134,7 +134,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
 
                 $http({
                     method: 'POST',
-                    url: '/sinat/save/datec',
+                    url: API_BASE_URL + '/save/datec',
                     data: formData,
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
@@ -142,7 +142,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                     if (response.data.status === false) {
                         alert('Arquivo já cadastrado no sistema!')
                     } else {
-                        window.location = '/sinat/cadastro'
+                        window.location = API_BASE_URL + '/cadastro';
                     }
 
                 }, function errorCallback(response) {
@@ -162,7 +162,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
 
             $http({
                 method: 'GET',
-                url: '/sinat/sistema/lista'
+                url: API_BASE_URL + '/sistema/lista'
             }).then(function successCallback(response) {
                 $scope.listaSistema = {
                     model: null,
@@ -185,10 +185,9 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                 formData.append('dte_data_inclusao', datestring);
                 formData.append('cod_tipo_solucao', this.tiposistemaconvencional);
                 formData.append('file', this.arquivo, this.arquivo.name);
-                console.log('não pode entrar aqui')
                 $http({
                     method: 'POST',
-                    url: '/sinat/save/convencional',
+                    url: API_BASE_URL + '/save/convencional',
                     data: formData,
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
@@ -197,7 +196,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                     if (response.data.status === false) {
                         alert('Arquivo já cadastrado no sistema!')
                     } else {
-                        window.location = '/sinat/cadastro'
+                        window.location = API_BASE_URL + '/cadastro'
                     }
 
                 }, function errorCallback(response) {
@@ -208,7 +207,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
 
             $scope.mudaSolucao = function (id) {
                 let params = {'sistema': id};
-                $http.get('/sinat/solucao/lista', {params}).then(function (response) {
+                $http.get(API_BASE_URL + '/solucao/lista', {params}).then(function (response) {
 
                     $scope.listaSolucao = {
                         model: null,
@@ -230,7 +229,7 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
 
             $scope.mudaTipoSolucao = function (id) {
                 let params = {'id': id};
-                $http.get('/sinat/tipo/lista', {params}).then(function (response) {
+                $http.get(API_BASE_URL + '/tipo/lista', {params}).then(function (response) {
                     $scope.listaTipoSolucao = {
                         model: null,
                         options: response.data

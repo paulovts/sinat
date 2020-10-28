@@ -2,23 +2,23 @@
     <div class="container">
         <ul>
             <li>
-                <a href="/sinat">Inicio</a>
+                <a href="/">Inicio</a>
             </li>
             <li>
-                <a href="/sinat/convencionais">Sistemas Convencionais</a>
+                <a href="{{ API_BASE_URL ~ '/convencionais' }}">Sistemas Convencionais</a>
             </li>
             <li>
-                <a href="/sinat/inovadores">Sistemas Inovadores</a>
+                <a href="{{ API_BASE_URL ~ '/inovadores' }}">Sistemas Inovadores</a>
             </li>
             <li>
-                <a href="/sinat/documentos">Documentos</a>
+                <a href="{{ API_BASE_URL ~ '/documentos' }}">Documentos</a>
             </li>
             {% if auth.check %}
                 <li>
-                    <a href="/sinat/cadastro">Cadastrar Documentos</a>
+                    <a href="{{ API_BASE_URL ~ '/cadastro' }}">Cadastrar Documentos</a>
                 </li>
                 <li>
-                    <a href="/sinat/auth/logout">Sair</a>
+                    <a href="{{ API_BASE_URL ~ '/auth/logout' }}">Sair</a>
                 </li>
 
             {% endif %}

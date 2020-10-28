@@ -14,25 +14,28 @@ session_start();
 require_once 'autoload.php';
 
 use DI\Container;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 
-use App\Controllers;
+// Define application environment
+defined('APP_ENV') || define('APP_ENV', (getenv('APP_ENV') ? getenv('APP_ENV') : 'dev'));
+defined('API_BASE_URL') || define('API_BASE_URL', (getenv('API_BASE_URL') ? getenv('API_BASE_URL') : 'http://localhost:8081'));
+defined('APP_BASE_PATH') || define('APP_BASE_PATH', (getenv('APP_BASE_PATH') ? getenv('APP_BASE_PATH') : '/sinat'));
+
 $container = new Container();
 
 AppFactory::setContainer($container);
 
 $app = AppFactory::create();
+
+if (getenv('APP_BASE_PATH')) {
+    $app->setBasePath(getenv('APP_BASE_PATH'));
+}
 require __DIR__ . '/public/includes/class.phpmailer.php';
 require __DIR__ . '/public/includes/class.smtp.php';
 require './config/routes.php';
 $app->addErrorMiddleware(true, true, true);
-//$app->add( new App\Middleware\AuthMiddleware($container) );
 
-//$app->add( new App\Middleware\Middleware($container));
-//$container->set('flash', fn ($container) => new Slim\Flash\Messages);
 $container->set('flash', function ($container) {
     return new  Slim\Flash\Messages;
 });
