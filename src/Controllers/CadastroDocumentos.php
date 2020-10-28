@@ -101,7 +101,7 @@ class CadastroDocumentos
             }
             $this->container->get('flash')->addMessage('info', 'Arquivo cadastrodo com Successo!');
             return (new Response())
-                ->withHeader('Location', '/cadastro')
+                ->withHeader('Location', API_BASE_URL.'/cadastro')
                 ->withStatus(302);
 
         } else {
@@ -159,7 +159,7 @@ class CadastroDocumentos
             }
             $this->container->get('flash')->addMessage('info', 'Arquivo cadastrodo com Successo!');
             return (new Response())
-                ->withHeader('Location', '/cadastro')
+                ->withHeader('Location', API_BASE_URL.'/cadastro')
                 ->withStatus(302);
 
         } else {
@@ -213,7 +213,7 @@ class CadastroDocumentos
             }
             $this->container->get('flash')->addMessage('info', 'Arquivo cadastrodo com Successo!');
             return (new Response())
-                ->withHeader('Location', '/cadastro')
+                ->withHeader('Location', API_BASE_URL.'/cadastro')
                 ->withStatus(302);
 
         } else {

@@ -37,7 +37,7 @@ class AuthController
         $retorno = $this->auth->attempt($data['username'], $data['password']);
 
         if ($retorno) {
-            return $response->withStatus(302)->withHeader('Location', '/cadastro');
+            return $response->withStatus(302)->withHeader('Location', API_BASE_URL.'/cadastro');
         } else {
             $this->container->get('flash')->addMessage('error', 'Usuário ou senhas inválidos');
             return $response->withStatus(302)->withHeader('Location', '/');
@@ -47,6 +47,6 @@ class AuthController
     public function logout(Request $request, Response $response)
     {
         $this->auth->logout();
-        return $response->withStatus(302)->withHeader('Location', '/');
+        return $response->withStatus(302)->withHeader('Location', API_BASE_URL.'/');
     }
 }
