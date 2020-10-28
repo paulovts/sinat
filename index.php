@@ -18,12 +18,10 @@ use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 
 // Define application environment
-defined('APP_ENV') || define('APP_ENV', (getenv('APP_ENV') ? getenv('APP_ENV') : 'dev'));
-defined('API_BASE_URL') || define('API_BASE_URL', (getenv('API_BASE_URL') ? getenv('API_BASE_URL') : 'http://localhost:8081'));
-defined('APP_BASE_PATH') || define('APP_BASE_PATH', (getenv('APP_BASE_PATH') ? getenv('APP_BASE_PATH') : '/sinat'));
-
+define('API_BASE_URL', ($_SERVER['API_BASE_URL'] ? $_SERVER['API_BASE_URL'] : 'http://localhost:8081'));
+define('APP_BASE_PATH', ($_SERVER['APP_BASE_PATH'] ? $_SERVER['APP_BASE_PATH'] : '/sinat'));
+define('APP_ENV', ($_SERVER['APP_ENV'] ? $_SERVER['APP_ENV'] : 'dev'));
 $container = new Container();
-
 AppFactory::setContainer($container);
 
 $app = AppFactory::create();
@@ -31,6 +29,7 @@ $app = AppFactory::create();
 if (getenv('APP_BASE_PATH')) {
     $app->setBasePath(getenv('APP_BASE_PATH'));
 }
+//$app->setBasePath('/sinat');
 require __DIR__ . '/public/includes/class.phpmailer.php';
 require __DIR__ . '/public/includes/class.smtp.php';
 require './config/routes.php';

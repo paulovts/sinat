@@ -1,4 +1,4 @@
 _catalogos/*
 .idea
 .vscode
-vendor/*
+.htaccess
