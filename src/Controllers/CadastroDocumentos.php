@@ -124,7 +124,7 @@ class CadastroDocumentos
         $uploadedFiles = $request->getUploadedFiles();
 
         $directory = __DIR__ . '/../../_catalogos/inovador/diretriz';
-        $path = '_catalogos/inovador/diretriz' . $uploadedFiles['file']->getClientFilename();
+        $path = '_catalogos/inovador/diretriz/' . $uploadedFiles['file']->getClientFilename();
 
         $existe = $this->inovadores->existeFiLeNameDiretriz($path);
 
@@ -174,7 +174,7 @@ class CadastroDocumentos
 
         $directory = __DIR__ . '/../../_catalogos/inovador/datec';
 
-        $path = '_catalogos/inovador/datec' . $uploadedFiles['file']->getClientFilename();
+        $path = '_catalogos/inovador/datec/' . $uploadedFiles['file']->getClientFilename();
 
         $existe = $this->inovadores->existeFiLeNameDatec($path);
 
@@ -186,9 +186,9 @@ class CadastroDocumentos
         }
 
         $arrDados = [
-            'txt_descricao_datec' => $params['txt_descricao_diretriz'],
-            'bln_vencido' => false,
-            'bln_suspenso' => false,
+            'txt_descricao_datec' => $params['txt_descricao_datec'],
+            'bln_vencido' => 'f',
+            'bln_suspenso' => 'f',
             'dte_data_emissao' => $params['dte_data_emissao'],
             'dte_data_validade' => $params['dte_data_validade'],
             'dte_data_insercao' => 'now()',

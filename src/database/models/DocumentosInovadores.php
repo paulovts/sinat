@@ -135,7 +135,7 @@ class DocumentosInovadores extends Base
         }
         $dados = $this->limparDadosVazios($params);
         $numDiretriz = $this->countDiretriz();
-
+        $numDiretriz = $numDiretriz + 1;
         $sql = "INSERT INTO catalogodesempenho.tab_diretriz
               (txt_descricao_diretriz,
                num_ultima_revisao,
@@ -148,8 +148,8 @@ class DocumentosInovadores extends Base
                '{$dados['num_ultima_revisao']}',
                '{$dados['txt_caminho_arquivo']}',
                'now()',
-               {$dados['dte_data_pulicacao_diretriz']},
-               {$numDiretriz},
+               '{$dados['dte_data_pulicacao_diretriz']}',
+               {$numDiretriz}
                )";
         $statement = $this->getConnection()->prepare($sql);
 
@@ -185,7 +185,7 @@ class DocumentosInovadores extends Base
                cod_diretriz,
                txt_ultima_versao,
                num_ordem_ficha,
-               cod_usuario_insercao,
+               cod_usuario_insercao
                )
             VALUES
               (
@@ -197,11 +197,11 @@ class DocumentosInovadores extends Base
                '{$dados['dte_data_insercao']}',
                '{$dados['txt_caminho_arquivo']}',
                '{$dados['cnpj_proponente']}',
-               '{$dados['cod_situacao_datec']}',
-               '{$dados['cod_diretriz']}',
+                null,
+                {$dados['cod_diretriz']},
                '{$dados['txt_ultima_versao']}',
                '{$dados['num_ordem_ficha']}',
-               '{$dados['cod_usuario_insercao']}'
+               {$dados['cod_usuario_insercao']}
                )";
         $statement = $this->getConnection()->prepare($sql);
 
