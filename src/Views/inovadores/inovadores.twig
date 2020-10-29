@@ -80,8 +80,8 @@
                 <td>{{ '{{item.dte_data_pulicacao_diretriz | date:"dd/MM/yyyy"}}' }}</td>
                 <td>{{ '{{ item.num_ordem_ficha }}' }}</td>
                 <td>{{ '{{ item.txt_descricao_diretriz }}' }}</td>
-                <td class="text-center"><a ng-href="{{ constant('API_BASE_URL') }}/inovadores/arquivos/diretriz/pdf/{{ '{{ item.cod_diretriz}}' }}"
-                                           download><i
+                <td class="text-center"><a href="{{ constant('API_BASE_URL') }}/inovadores/arquivos/diretriz/pdf/{{ '{{ item.cod_diretriz}}' }}"
+                                           target="_blank"><i
                                 class="fa fa-file-pdf-o fa-4x"></i></a></td>
             </tr>
         </table>
@@ -106,7 +106,7 @@
                 <td>{{ '{{ itemDatec.num_numero_diretriz }}' }}</td>
                 <td>{{ '{{ itemDatec.txt_descricao_datec }}' }}</td>
                 <td class="text-center"><a
-                            ng-href="{{ constant('API_BASE_URL') }}/inovadores/arquivos/datec/pdf/{{ '{{ itemDatec.cod_catalogo_datec}}' }}" download><i
+                            href="{{ constant('API_BASE_URL') }}/inovadores/arquivos/datec/pdf/{{ '{{ itemDatec.cod_catalogo_datec}}' }}" target="_blank"><i
                                 class="fa fa-file-pdf-o fa-4x"></i></a></td>
             </tr>
         </table>
