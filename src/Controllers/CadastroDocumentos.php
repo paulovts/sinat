@@ -61,15 +61,13 @@ class CadastroDocumentos
         $params = $request->getParsedBody();
         $uploadedFiles = $request->getUploadedFiles();
 
-        $directory = '../_catalogos/convencional';
+        $directory = __DIR__ . '/../../_catalogos/convencional';
 
         $path = '_catalogos/convencional/' . $uploadedFiles['file']->getClientFilename();
 
         $existe = $this->convencional->existeFiLeName($path);
 
         if ($existe) {
-//            $this->container->get('flash')->addMessage('error', 'Arquivo já cadastrado no sistema');
-
             $message = ['error' => 'Arquivo já cadastrado no sistema', 'status' => false];
             $data = json_encode($message);
             $response->getBody()->write("$data");
@@ -92,16 +90,15 @@ class CadastroDocumentos
 //        $modelConvencional = new DocumentosConvencionais();
 
         $retorno = $this->convencional->save($arrDados);
-
         if ($retorno) {
             $uploadedFile = $uploadedFiles['file'];
 
             if ($uploadedFile->getError() === UPLOAD_ERR_OK) {
                 $this->moveUploadedFile($directory, $uploadedFile);
             }
-            $this->container->get('flash')->addMessage('info', 'Arquivo cadastrodo com Successo!');
+            $this->container->get('flash')->addMessage('info', 'Arquivo cadastrado com Successo!');
             return (new Response())
-                ->withHeader('Location', API_BASE_URL.'/cadastro')
+                ->withHeader('Location', API_BASE_URL . '/cadastro')
                 ->withStatus(302);
 
         } else {
@@ -126,11 +123,10 @@ class CadastroDocumentos
         $params = $request->getParsedBody();
         $uploadedFiles = $request->getUploadedFiles();
 
-        $directory = '../_catalogos/inovador/diretriz';
+        $directory = __DIR__ . '/../../_catalogos/inovador/diretriz';
         $path = '_catalogos/inovador/diretriz' . $uploadedFiles['file']->getClientFilename();
 
         $existe = $this->inovadores->existeFiLeNameDiretriz($path);
-
 
         if ($existe) {
             $message = ['error' => 'Arquivo já cadastrado no sistema', 'status' => false];
@@ -159,7 +155,7 @@ class CadastroDocumentos
             }
             $this->container->get('flash')->addMessage('info', 'Arquivo cadastrodo com Successo!');
             return (new Response())
-                ->withHeader('Location', API_BASE_URL.'/cadastro')
+                ->withHeader('Location', API_BASE_URL . '/cadastro')
                 ->withStatus(302);
 
         } else {
@@ -176,7 +172,8 @@ class CadastroDocumentos
         $params = $request->getParsedBody();
         $uploadedFiles = $request->getUploadedFiles();
 
-        $directory = '../_catalogos/inovador/datec';
+        $directory = __DIR__ . '/../../_catalogos/inovador/datec';
+
         $path = '_catalogos/inovador/datec' . $uploadedFiles['file']->getClientFilename();
 
         $existe = $this->inovadores->existeFiLeNameDatec($path);
@@ -213,7 +210,7 @@ class CadastroDocumentos
             }
             $this->container->get('flash')->addMessage('info', 'Arquivo cadastrodo com Successo!');
             return (new Response())
-                ->withHeader('Location', API_BASE_URL.'/cadastro')
+                ->withHeader('Location', API_BASE_URL . '/cadastro')
                 ->withStatus(302);
 
         } else {
