@@ -96,8 +96,10 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                 }).then(function successCallback(response) {
 
                     if (response.data.status === false) {
-                        alert('Arquivo já cadastrado no sistema!')
+                        Flash.create('danger', 'Arquivo já cadastrado no Sistema. Por favor escolha ' +
+                            'outro arquivo!', 0, {container: 'flash-nootifier-convencional'});
                     } else {
+                        alert('Arquivo salvo com sucesso!!');
                         window.location = API_BASE_URL + '/cadastro'
                     }
 
@@ -140,8 +142,10 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                     headers: {'Content-Type': undefined}
                 }).then(function successCallback(response) {
                     if (response.data.status === false) {
-                        alert('Arquivo já cadastrado no sistema!')
+                        Flash.create('danger', 'Arquivo já cadastrado no Sistema. Por favor escolha ' +
+                            'outro arquivo!', 0, {container: 'flash-nootifier-inovadores'});
                     } else {
+                        alert('Arquivo salvo com sucesso!!');
                         window.location = API_BASE_URL + '/cadastro';
                     }
 
@@ -153,13 +157,12 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
     })
     .component('cadastroConvencional', {
         templateUrl: 'cadastro/convencional',
-        controller: function CadastroConvencionalController($scope, $http) {
+        controller: function CadastroConvencionalController($scope, $http, Flash) {
             $scope.sistema = "";
             $scope.solucao = "";
             $scope.descricao = "";
             $scope.arquivo = [];
             $scope.tiposistemaconvencional = "";
-
             $http({
                 method: 'GET',
                 url: API_BASE_URL + '/sistema/lista'
@@ -194,9 +197,13 @@ angular.module('myApp', ['ngAnimate', 'ngFlash'])
                 }).then(function successCallback(response) {
 
                     if (response.data.status === false) {
-                        alert('Arquivo já cadastrado no sistema!')
+                        Flash.create('danger', 'Arquivo já cadastrado no Sistema. Por favor escolha ' +
+                            'outro arquivo!', 0, {container: 'flash-nootifier-convencional'});
                     } else {
-                        window.location = API_BASE_URL + '/cadastro'
+                        alert('Arquivo salvo com sucesso!!');
+                        Flash.create('success', 'Arquivo salvo com sucesso' +
+                            'outro arquivo!', 0, {container: 'flash-nootifier-geral'});
+                        window.location = API_BASE_URL + '/cadastro';
                     }
 
                 }, function errorCallback(response) {

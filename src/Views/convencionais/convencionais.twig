@@ -10,9 +10,7 @@
             critérios e parâmetros de Desempenho estabelecidos na ABNT NBR 15575.</p>
     </div>
     <br>
-    <div data-ng-app="myApp" ng-controller="CatalogoConvencional"> <!--Inicio Tabela Catálogo-->
-
-
+    <div data-ng-app="convencionalApp" ng-controller="CatalogoConvencional"> <!--Inicio Tabela Catálogo-->
         <div id="filtrarCatalogo" class="well"
              style="padding-left: 0px; padding-top: 0px; padding-right: 0px; text-align:center">
             <h1 style="background-color: #E1E1E1; font-size: 17px; margin-top:0; padding-top: 5px; padding-bottom: 5px">
@@ -155,9 +153,9 @@
     {{ parent() }}
     <script type="text/javascript">
 
-        let catalogoConvencional = angular.module('myApp', ['ngAnimate']);
+        let catalogoConvencional = angular.module('convencionalApp', ['ngAnimate','ngFlash']);
 
-        catalogoConvencional.controller('CatalogoConvencional', ['$scope', '$http', function ($scope, $http) {
+        catalogoConvencional.controller('CatalogoConvencional', ['$scope', '$http','Flash', function ($scope, $http, Flash) {
             $scope.ordem = 'sistema';
             $scope.sistema = "";
             $scope.solucao = "";

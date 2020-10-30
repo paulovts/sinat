@@ -1,5 +1,6 @@
 <div class="well">
-    <form method="POST" ng-controller="CadastroController" ng-submit="submit()" enctype="multipart/form-data">
+    <flash-message name="flash-nootifier-convencional"></flash-message>
+    <form method="POST" [formGroup]="convencionalForm" ng-controller="CadastroController" ng-submit="submit()" enctype="multipart/form-data">
         <div class="show">
             <div class="tituloForm">
                 <H4>Dados do Documento</H4>

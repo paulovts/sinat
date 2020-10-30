@@ -9,7 +9,7 @@
             Estes processos constituem inovações em relação ao processo convencional da construção civil no Brasil.</p>
     </div>
     <br>
-    <div ng-app="myApp" ng-controller="CatalogoInovador">
+    <div ng-app="inovadoresApp" ng-controller="CatalogoInovador">
         <div id="filtrarCatalogo" class="well"
              style="padding-left: 0px; padding-top: 0px; padding-right: 0px; text-align:center">
             <h1 style="background-color: #E1E1E1; font-size: 17px; margin-top:0; padding-top: 5px; padding-bottom: 5px">
@@ -117,7 +117,7 @@
 {% block scripts %}
     {{ parent() }}
     <script>
-        let catalogoInovador = angular.module('myApp', ['ngAnimate']);
+        let catalogoInovador = angular.module('inovadoresApp', ['ngAnimate']);
 
         catalogoInovador.controller('CatalogoInovador', ['$scope', '$http', function ($scope, $http) {
             $scope.ordem = 'numero';
