@@ -22,6 +22,8 @@ define('API_BASE_URL', ($_SERVER['API_BASE_URL'] ? $_SERVER['API_BASE_URL'] : 'h
 define('APP_BASE_PATH', ($_SERVER['APP_BASE_PATH'] ? $_SERVER['APP_BASE_PATH'] : '/sinat'));
 define('APP_ENV', ($_SERVER['APP_ENV'] ? $_SERVER['APP_ENV'] : 'dev'));
 
+var_dump($_SERVER['APP_ENV'] );die;
+
 $container = new Container();
 AppFactory::setContainer($container);
 
