@@ -4,7 +4,7 @@
         "db" => [
             "dsn" => "pgsql:host=172.17.18.224;port=5432;dbname=mdr_snh_dhab",
             "username" => "sys.snh_dhab",
-            "password" => "#BDsyssnhdh@b#"
+            "password" => "mdr@123"
         ],
     ],
     'prod-fab' => [
