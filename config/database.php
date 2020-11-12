@@ -2,7 +2,7 @@
     'prod' => [
         'displayErrorDetails' => false,
         "db" => [
-            "dsn" => "pgsql:host=condado;port=5432;dbname=snh_dhab",
+            "dsn" => "pgsql:host=172.17.18.224;port=5432;dbname=mdr_snh_dhab",
             "username" => "sys.snh_dhab",
             "password" => "#BDsyssnhdh@b#"
         ],
