@@ -30,7 +30,7 @@
 
                     <div class="col-sm-6 col-xs-12">
                         <label class="labelFiltro"> Solução: </label>
-                        <select ng-model="solucao" class="form-control" name="solucao">
+                        <select ng-model="solucao" class="form-control"  style="width: 250px" name="solucao">
                             <option value="">Todas</option>
                             <option ng-repeat="option in listaSolucao.options"
                                     value="{{ '{{ option.txt_solucao}}' }}">{{ '{{ option.txt_solucao}}' }}</option>
