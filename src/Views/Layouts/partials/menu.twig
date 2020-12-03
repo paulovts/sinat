@@ -1,23 +1,29 @@
 <div id="nav" class="nav" style="position: relative">
     <div class="container">
         <ul>
-            <li>
+            <li><img src="{{ constant('API_BASE_URL') }}/public/assets/img/icone_casa.png" height="15px"
+                     style="margin-right: 4px;">
                 <a href="{{ constant('API_BASE_URL') ~ '/' }}">Inicio</a>
             </li>
-            <li>
+            <li><img src="{{ constant('API_BASE_URL') }}/public/assets/img/icone_casa.png" height="15px"
+                     style="margin-right: 4px;">
                 <a href="{{ constant('API_BASE_URL') ~ '/convencionais' }}">Sistemas Convencionais</a>
             </li>
-            <li>
+            <li><img src="{{ constant('API_BASE_URL') }}/public/assets/img/icone_casa.png" height="15px"
+                     style="margin-right: 4px;">
                 <a href="{{ constant('API_BASE_URL') ~ '/inovadores' }}">Sistemas Inovadores</a>
             </li>
-            <li>
+            <li><img src="{{ constant('API_BASE_URL') }}/public/assets/img/icone_casa.png" height="15px"
+                     style="margin-right: 4px;">
                 <a href="{{ constant('API_BASE_URL') ~ '/documentos' }}">Documentos</a>
             </li>
             {% if auth.check %}
-                <li>
+                <li><img src="{{ constant('API_BASE_URL') }}/public/assets/img/icone_casa.png" height="15px"
+                         style="margin-right: 4px;">
                     <a href="{{ constant('API_BASE_URL') ~ '/cadastro' }}">Cadastrar Documentos</a>
                 </li>
-                <li>
+                <li><img src="{{ constant('API_BASE_URL') }}/public/assets/img/icone_casa.png" height="15px"
+                         style="margin-right: 4px;">
                     <a href="{{ constant('API_BASE_URL') ~ '/auth/logout' }}">Sair</a>
                 </li>
 

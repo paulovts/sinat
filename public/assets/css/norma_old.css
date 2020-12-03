@@ -1,0 +1,415 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	background: #EEE;
+}
+
+.header {
+	background: -webkit-linear-gradient(#A2D023, #83AA17); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#A2D023, #83AA17); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#A2D023, #83AA17); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#A2D023, #83AA17); /* Standard syntax (must be last) */
+	width: 100%;
+	height: 120px;
+	position: absolute;
+	border: 12px;
+	color: white;
+}
+
+.header h1 {
+	font-family: 'Alegreya Sans SC', sans-serif;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: 44px;
+}
+
+.header h3 {
+	font-size: 12px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+.header .secretaria h3 {
+	font-size: 232px;
+}
+
+
+
+
+
+.form-group label {
+	font-size: 11px;
+	margin-bottom: 2px;
+	margin-left: 2px;
+}
+
+.descricaoSolucao{
+	font-size: 9px;
+	margin-bottom: 2px;
+	margin-left: 2px;
+	color:#999;
+}
+
+
+.container {
+	width: 960px;
+}
+
+
+#conteudo {
+	background: white;
+	color: black;
+	margin-left:-15px;
+	margin-right:-15px;
+}
+
+
+
+
+#sistema H6 {
+	margin: 5px 35px 20px 0px;
+}
+
+
+#nav {
+	background-color: #15779A;
+	margin: 0px 0px 0px 0px;
+	padding-bottom: 0px;
+}
+
+
+#nav ul {
+	margin: 8px 0px 8px 0px;
+	padding: 0px 0px 0px 0px;
+	font-size: 12px;
+	color: #D8D8D8;
+	margin-bottom: 4px;
+	padding-bottom: 0px;
+	margin-top: 4px;
+	padding-top: 0px;
+}
+
+
+#nav ul li {
+	display: inline;
+	margin: 0px 30px 0px 0px;
+	font-family: 'Alegreya Sans SC', sans-serif;
+	font-size: 20px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+
+#nav a {
+	color: #D8D8D8;
+}
+
+#submenu li{
+	color:#333;}
+
+.page-header h2, #titulo_result,  h1 {
+	font-family: 'Alegreya Sans SC', sans-serif;
+	font-size: 30px;
+	margin-bottom: 5px;
+}
+
+
+
+#titulo H2 {
+	color: #424242;
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 40px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+
+#subtitulo H5 {
+	color: #424242;
+	margin-top: 2px;
+}
+
+.nome {
+	/*border-bottom: 1px solid #15779A;*/
+	margin-top: 40px;
+}
+
+#colunas {
+	color: black;
+	margin-top: 20px;
+}
+
+
+
+.col-xs-3 {
+	background-color: white;
+	height: 400px;
+}
+
+
+
+
+.col-xs-12 {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+
+
+#subtitulo {
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-left: 0px;
+}
+
+
+
+#footer {
+	width: 100%;
+	height: 150px;
+	background: -webkit-linear-gradient(#D7D7D7, #A5A5A5); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(#D7D7D7, #A5A5A5); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#D7D7D7, #A5A5A5); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#D7D7D7, #A5A5A5); /* Standard syntax (must be last) */
+}
+
+
+
+#footer h4 {
+	color: #55565C;
+	margin-bottom: 5px;
+	margin-top: 35px;
+}
+
+#footer p{
+	color: #55565C;
+	margin-bottom: 0px;
+	margin-top: 1px;
+	font-size: 11px;
+}
+
+#footer-brasil {
+	background: none repeat scroll 0% 0% #15779A;
+	padding: 1em 0px;
+	max-width: 100%;
+}
+
+
+
+.corpo{
+	background: #EEE;
+}
+
+.corpo h3 {
+	font-size: 26px;
+	font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+
+/* �REA DO LOGIN */
+
+.login {
+	background: white;
+	height: 400px;
+	border: 1px solid #B0B2A8;
+	margin-left: 18px;
+	margin-top: 48px;
+	margin-bottom: 36px;
+	padding: 20px;
+}
+
+.login h4 {
+	text-align: center;
+	font-family: 'Alegreya Sans SC', sans-serif;
+	font-size: 24px;
+	margin-bottom: 26px;
+}
+
+
+
+.corpo p {
+	font-size: 14px;
+}
+.tituloForm hr{
+	height: 2px;
+	border-color:#999;
+}
+.tituloForm h4, .tituloForm hr{
+	padding: 0 0 0 0;
+	margin-top: 0;
+}
+
+/******** Tabela Catalogo *******/
+
+.well {
+	-webkit-box-shadow: 0px 6px 16px 1px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0px 6px 16px 1px rgba(0,0,0,0.4);
+	box-shadow: 0px 6px 16px 1px rgba(0,0,0,0.4);
+
+	padding-top: 15;
+	padding-bottom: 15px;
+}
+
+.well h3 {
+	padding-top: 0;
+	margin-top: 0;
+	font-size: 30px;
+	font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.img-responsive {
+	-webkit-box-shadow: 0px 6px 16px 1px rgba(0,0,0,0.4);
+	-moz-box-shadow: 0px 6px 16px 1px rgba(0,0,0,0.4);
+	box-shadow: 0px 6px 8px 1px rgba(0,0,0,0.4);
+}
+
+th {
+	background: #83AA17;
+	color: white;
+}
+
+.filtroOrdem {
+	margin: auto;
+	width: 50%;
+	padding: 10px;
+	background: #F5F5F5;
+	border: 1px inset white;
+}
+.fileiraCatalogo {
+	opacity: .85;
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+
+.fileiraCatalogo:hover {
+	opacity: 1;
+	background: #E0E0E0;
+	-webkit-transform: scale(1.006);
+	-moz-transform: scale(1.006);
+	-ms-transform: scale(1.006);
+	transform: scale(1.006);
+
+}
+
+.fileiraCatalogo.ng-enter.ng-enter-active,
+.fileiraCatalogo.ng-leave {
+	opacity: 1;
+	overflow:hidden;
+
+}
+
+.fileiraCatalogo.ng-leave.ng-leave-active,
+.fileiraCatalogo.ng-enter {
+	opacity: 0;
+	heigth:0;
+	overflow:hidden;
+
+}
+
+i.fa-file-pdf-o {
+
+	color: #83AA17;
+}
+
+fa-file-pdf-o on fa-camera
+
+.form-inline {
+	margin-bottom: 20px;
+}
+
+.labelFiltro {
+	font-family: 'Alegreya Sans SC', sans-serif;
+	font-size: 20px;
+
+}
+
+.labelFiltroPequeno {
+	font-family: 'Alegreya Sans SC', sans-serif;
+	font-size: 15px;
+	margin-right: 5px;
+}
+
+.form-control {
+	margin-right: 5px;
+}
+
+.form-control:focus {
+	border-color: #83AA17;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(131, 170, 23, 0.6);
+}
+
+.naoAvaliado {
+	color: #CC0000;
+}
+
+.naoAvaliadoTabela {
+	background-color: #CC0000;
+}
+
+i.naoAvaliadoDoc {
+	color: #CC0000;
+	cursor: pointer;
+}
+
+.naoAvaliadoPulse {
+	animation:pulse 1s infinite;
+	-webkit-animation:pulse 1s infinite;
+}
+
+@keyframes pulse {
+	0%    { transform:scale(1); }
+	25%     { transform:scale(1.05); }
+	75%     { transform:scale(1); }
+}
+@-webkit-keyframes pulse {
+	0%    { -webkit-transform:scale(1); }
+	25%     { -webkit-transform:scale(1.05); }
+	75%     { -webkit-transform:scale(1); }
+}
+
+.atencao .modal-header{
+	background-color: #CC0000;
+	color: white;
+}
+
+.atencao .modal-footer {
+	background-color: #CC0000;
+	color: white;
+	font-weigth: bold;
+}
+
+.alerta:focus {
+	border-color: #CC0000;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+#tabelaCatalogo td{
+	word-wap: break-word;
+}
+
+.form-control-feedback  {
+	right: 20px;
+}
+
+.btn-file {
+	position: relative;
+	overflow: hidden;
+}
+.btn-file input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100%;
+	font-size: 100px;
+	text-align: right;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	outline: none;
+	background: white;
+	cursor: inherit;
+	display: block;
+}
